@@ -15,13 +15,9 @@ public:
                 mp.insert(pair<int, char>(ctr[i], 'a' + i));
             }
             else {
-                do {
-                    ++count;
-                } while (mp.find(--ctr[i]) != mp.end());
-                if (ctr[i] == 0) {
-                    continue;
-                }
-                mp.insert(pair<int, char>(ctr[i], 'a' + i));
+                ++count;
+                for (; mp.find(--ctr[i]) != mp.end(); ++count);
+                mp.insert(pair<int, char>((ctr[i] == 0? -1 : ctr[i]), 'a' + i));
             }
         }
         return count;
