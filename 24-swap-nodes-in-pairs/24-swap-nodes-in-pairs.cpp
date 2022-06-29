@@ -1,15 +1,13 @@
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
-        return head == nullptr? nullptr : swapn(head, head->next);
-    }
-    ListNode* swapn(ListNode* n1, ListNode* n2) {
-        if (n2 == nullptr) {
-            return n1;
+        ListNode** pp(&head), * a, * b;
+        while ((a = *pp) && (b = a->next)) {
+            a->next = b->next;
+            b->next = a;
+            *pp = b;
+            pp = &a->next;
         }
-         n2->next = n2->next == nullptr ? nullptr : swapn(n2->next, n2->next->next);
-         n1->next = n2->next;
-         n2->next = n1;
-        return n2;
+        return head;
     }
 };
