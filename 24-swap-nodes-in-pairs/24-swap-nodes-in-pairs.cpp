@@ -1,12 +1,12 @@
 class Solution {
 public:
-    ListNode* swapPairs(ListNode* head) {
-        ListNode** pp(&head), * a, * b;
-        while ((a = *pp) && (b = a->next)) {
+     ListNode* swapPairs(ListNode* head) {
+        ListNode** indirect(&head), * a, * b;
+        while ((a = *indirect) && (b = a->next)) {
             a->next = b->next;
             b->next = a;
-            *pp = b;
-            pp = &a->next;
+            *indirect = b;
+            indirect = &a->next;
         }
         return head;
     }
