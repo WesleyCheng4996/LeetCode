@@ -1,16 +1,16 @@
+
+
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
         
-        if(tokens.size() == 1){
-            return stoi(tokens.back());
-        }
+        static constexpr void* labels[] = {&&ISOPERATOR, &&ISDIGIT, &&DONE};
+        static constexpr void* operators[] = {&&MUL, &&ADD, &&DONE, &&SUB, &&DONE, &&DIV};
         
         vector<int>stack;
         reverse(tokens.begin(), tokens.end());
         
-        constexpr void* labels[] = {&&ISOPERATOR, &&ISDIGIT, &&DONE};
-        constexpr void* operators[] = {&&MUL, &&ADD, &&DONE, &&SUB, &&DONE, &&DIV};
+        
         while(!tokens.empty()){
             int a, b;
             goto *labels[isNumber(tokens.back())];
