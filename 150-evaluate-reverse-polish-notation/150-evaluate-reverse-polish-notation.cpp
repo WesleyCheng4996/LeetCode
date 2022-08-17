@@ -9,11 +9,6 @@ public:
         vector<int>stack;
         reverse(tokens.begin(), tokens.end());
         
-        stack.push_back(stoi(tokens.back()));
-        tokens.pop_back();
-        stack.push_back(stoi(tokens.back()));
-        tokens.pop_back();
-        
         constexpr void* labels[] = {&&ISOPERATOR, &&ISDIGIT, &&DONE};
         
         while(!tokens.empty()){
