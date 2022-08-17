@@ -8,6 +8,7 @@ public:
         static constexpr void* operators[] = {&&MUL, &&ADD, &&DONE, &&SUB, &&DONE, &&DIV};
         
         vector<int>stack;
+        stack.reserve(tokens.capacity());
         reverse(tokens.begin(), tokens.end());
         
         
