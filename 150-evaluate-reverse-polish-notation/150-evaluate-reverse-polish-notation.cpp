@@ -15,7 +15,8 @@ public:
             int a, b;
             goto *labels[isNumber(tokens.back())];
         ISDIGIT:
-            stack.push_back(stoi(tokens.back()));
+            a = stoi(tokens.back());
+            stack.push_back(a);
             goto DONE;
         ISOPERATOR:
             b = stack.back();
