@@ -7,8 +7,8 @@ public:
         static constexpr void* labels[] = {&&ISOPERATOR, &&ISDIGIT, &&DONE};
         static constexpr void* operators[] = {&&MUL, &&ADD, &&DONE, &&SUB, &&DONE, &&DIV};
         
-        vector<int>stack;
-        stack.reserve(tokens.capacity());
+        stack<int>st;
+
         reverse(tokens.begin(), tokens.end());
         
         
@@ -19,10 +19,10 @@ public:
             a = stoi(tokens.back());
             goto DONE;
         ISOPERATOR:
-            b = stack.back();
-            stack.pop_back();
-            a = stack.back();
-            stack.pop_back();
+            b = st.top();
+            st.pop();
+            a = st.top();
+            st.pop();
             goto *operators[tokens.back().back() - 42];
         ADD:
             a += b;
@@ -37,11 +37,11 @@ public:
             goto DONE;
 
         DONE:
-            stack.push_back(a);
+            st.push(a);
             tokens.pop_back();
         }
         
-        return stack.back();
+        return st.top();
     }
                             
     bool isNumber(const string& str){
