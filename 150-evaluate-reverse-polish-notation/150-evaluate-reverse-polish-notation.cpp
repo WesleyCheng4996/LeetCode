@@ -1,49 +1,24 @@
-
-
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
-        
-        static constexpr void* labels[] = {&&ISOPERATOR, &&ISDIGIT, &&DONE};
-        static constexpr void* operators[] = {&&MUL, &&ADD, &&DONE, &&SUB, &&DONE, &&DIV};
-        
-        vector<int>stack;
-        reverse(tokens.begin(), tokens.end());
-        
-        
-        while(!tokens.empty()){
-            int a, b;
-            goto *labels[isNumber(tokens.back())];
-        ISDIGIT:
-            a = stoi(tokens.back());
-            goto DONE;
-        ISOPERATOR:
-            b = stack.back();
-            stack.pop_back();
-            a = stack.back();
-            stack.pop_back();
-            goto *operators[tokens.back().back() - 42];
-        ADD:
-            a += b;
-            goto DONE;
-        SUB:
-            a -=b ;
-            goto DONE;
-        MUL:
-            a *= b;
-            goto DONE;
-        DIV: a /= b;
-            goto DONE;
-
-        DONE:
-            stack.push_back(a);
-            tokens.pop_back();
+        unordered_map<string, function<int (int, int) > > map = {
+            { "+" , [] (int a, int b) { return a + b; } },
+            { "-" , [] (int a, int b) { return a - b; } },
+            { "*" , [] (int a, int b) { return a * b; } },
+            { "/" , [] (int a, int b) { return a / b; } }
+        };
+        std::stack<int> stack;
+        for (string& s : tokens) {
+            if (!map.count(s)) {
+                stack.push(stoi(s));
+            } else {
+                int op1 = stack.top();
+                stack.pop();
+                int op2 = stack.top();
+                stack.pop();
+                stack.push(map[s](op2, op1));
+            }
         }
-        
-        return stack.back();
-    }
-                            
-    bool isNumber(const string& str){
-        return str.size() > 1 || (str.size() == 1 && isdigit(str.back())) ;
+        return stack.top();
     }
 };
