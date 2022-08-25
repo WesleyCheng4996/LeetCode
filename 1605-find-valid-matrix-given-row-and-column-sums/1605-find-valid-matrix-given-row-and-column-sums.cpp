@@ -7,18 +7,17 @@ public:
             x.resize(col);
         }
         for(int i = 0; i < row; ++i) {
-            for(int j = 0; j < col && rowSums[i] > 0; ++j){
+            for(int j = 0; j < col; ++j){
                 if(colSums[j] >= rowSums[i]){
-                    colSums[j] -= rowSums[i];
                     ans[i][j] = rowSums[i];
+                    colSums[j] -= rowSums[i];
                     rowSums[i] = 0;
-                    
+                    break;
                 }
                 else {
-                    rowSums[i] -= colSums[j];
                     ans[i][j] = colSums[j];
+                    rowSums[i] -= colSums[j];
                     colSums[j] = 0;
-                    
                 }
             }
         }
