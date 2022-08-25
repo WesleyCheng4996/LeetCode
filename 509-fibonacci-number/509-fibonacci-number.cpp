@@ -27,10 +27,10 @@ public:
                 Multiply(arr, base);
             }
             n >>= 1;
+            Multiply(base, base);
             if (n <= 0) {
                 break;
             }
-            Multiply(base, base);
         }
 
         return arr[0];
