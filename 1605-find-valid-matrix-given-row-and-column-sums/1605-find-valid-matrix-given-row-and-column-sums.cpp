@@ -2,10 +2,8 @@ class Solution {
 public:
     vector<vector<int>> restoreMatrix(vector<int>& rowSums, vector<int>& colSums) {
         int row = rowSums.size(), col = colSums.size();
-        vector<vector<int>> ans(row);
-        for(auto& x: ans){
-            x.resize(col);
-        }
+        vector<vector<int>> ans(row, vector<int>(col));
+
         for(int i = 0; i < row; ++i) {
             for(int j = 0; j < col; ++j){
                 if(colSums[j] >= rowSums[i]){
