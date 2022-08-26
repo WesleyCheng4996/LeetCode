@@ -17,7 +17,7 @@ public:
         
         ListNode* odd(head), *even(head->next), *even_head(even);
         
-        while(odd != nullptr && even != nullptr && even->next != nullptr){
+        while(even != nullptr && even->next != nullptr){
             odd->next = even->next;
             even->next = even->next->next;
             odd = odd->next;
