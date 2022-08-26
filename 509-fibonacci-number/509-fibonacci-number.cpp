@@ -10,6 +10,7 @@ struct Fib {
 	int arr[N];
 };
 constexpr Fib<31> f;
+
 class Solution {
 public:
     int fib(int n) {
