@@ -11,7 +11,8 @@
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
-        if(head == nullptr || head->next == nullptr) {
+        
+        if(head == nullptr) {
             return head;
         }
         
