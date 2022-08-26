@@ -1,21 +1,24 @@
 class Solution {
 public:
     bool reorderedPowerOf2(int num) {
-        int c = 0;
-        while(num != 0){
-            c += 1 << (num % 10);
-            num /= 10;
-        }
-        for (unsigned long long i = 1; i <= 0x80000000; i <<= 1) {
-            unsigned long long n = i, m = 0;
-            while (n != 0) {
-                m += 1 << (n % 10);
-                n /= 10;
-            }
-            if (c == m) {
+        const short num_digits(recordDigits(num));
+
+        for (int i(0); i < 32; ++i) {
+            const short _2_power_of_i_digits(recordDigits(1 << i));
+            if (recordDigits(1 << i) == num_digits) {
                 return true;
             }
         }
         return false;
+    }
+
+    short recordDigits(unsigned int num) {
+        short result(0);
+        do {
+            result += 1 << (num % 10);
+            num /= 10;
+        } while (num != 0);
+
+        return result;
     }
 };
