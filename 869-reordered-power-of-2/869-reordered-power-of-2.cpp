@@ -7,15 +7,15 @@ public:
             num /= 10;
         }
         for (unsigned long long i = 1; i <= 0x80000000; i <<= 1) {
-        unsigned long long n = i, m = 0;
-        while (n != 0) {
-            m += 1 << (n % 10);
-            n /= 10;
+            unsigned long long n = i, m = 0;
+            while (n != 0) {
+                m += 1 << (n % 10);
+                n /= 10;
+            }
+            if (c == m) {
+                return true;
+            }
         }
-        if (c == m) {
-            return true;
-        }
-    }
         return false;
     }
 };
