@@ -13,7 +13,7 @@ struct Constant
     int arr[N];
 };
 
-constexpr Constant<30> c;
+constexpr Constant<1000> c;
 
 class Solution {
 public:
