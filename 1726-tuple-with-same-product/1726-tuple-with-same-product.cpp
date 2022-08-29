@@ -1,33 +1,35 @@
-template<size_t N>
-struct Constant
-{
-    constexpr Constant() :
-        arr()
-    {
-        arr[0] = 0;
-        arr[1] = 0;
-        for (int i = 2; i < N; ++i) {
-            arr[i] = ((i * (i - 1)) << 2);
-        }
-    }
-    int arr[N];
-};
+int foo(std::vector<int> &nums) {
+  std::vector<int> m;
+  m.reserve(nums.size() * (nums.size() - 1) / 2 + 1);
+  int rv = 0;
 
-constexpr Constant<1000> c;
+  for (int i = 0; i < nums.size(); i++) {
+    for (int j = i + 1; j < nums.size(); j++) {
+      auto n = nums[i] * nums[j];
+      m.push_back(n);
+    }
+  }
+  std::sort(m.begin(), m.end());
+  m.push_back(-1);
+  int prev = m[0];
+  int count = 0;
+
+  for (auto scan : m) {
+    if (prev != scan) {
+      rv += (count - 1) * count * 4;
+      count = 0;
+    }
+    prev = scan;
+    count++;
+  }
+  return rv;
+}
+
+
 
 class Solution {
 public:
-    int tupleSameProduct(vector<int>& nums) {     
-        unordered_map<int, int> mp;
-        int nums_len = nums.size(), counter = 0;
-        for (int i = 0; i < nums_len; ++i) {
-            for (int j = i + 1; j < nums_len; ++j) {
-                ++mp[nums[i] * nums[j]];
-            }
-        }
-        for (auto x : mp) {
-            counter += c.arr[x.second];
-        }
-        return counter;
+    int tupleSameProduct(vector<int>& nums) {
+        return foo(nums);
     }
 };
