@@ -20,7 +20,7 @@ Constant<300> c;
 class Solution {
 public:
     int tupleSameProduct(vector<int>& nums) {
-        unordered_map<int, int> mp;
+        map<int, int> mp;
         int nums_len = nums.size(), counter = 0;
         for (int i = 0; i < nums_len; ++i) {
             for (int j = i + 1; j < nums_len; ++j) {
