@@ -14,6 +14,7 @@ struct Constant
 };
 
 constexpr Constant<30> c;
+
 class Solution {
 public:
     int tupleSameProduct(vector<int>& nums) {     
