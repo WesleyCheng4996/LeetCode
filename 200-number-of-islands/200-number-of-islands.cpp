@@ -8,6 +8,7 @@ void destroyIsland(vector<vector<char>>& grid, int m, int n){
     const int mm = grid.size(), nn = grid[0].size();
     
     --grid[m][n];
+    
     if(m > 0) {
         funcs[grid[m - 1][n] - '0'](grid, m - 1, n);
     }
