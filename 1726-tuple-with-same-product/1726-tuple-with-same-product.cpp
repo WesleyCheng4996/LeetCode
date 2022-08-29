@@ -13,11 +13,10 @@ struct Constant
     int arr[N];
 };
 
-
+constexpr Constant<30> c;
 class Solution {
 public:
-    int tupleSameProduct(vector<int>& nums) {
-        static constexpr Constant<30> c;
+    int tupleSameProduct(vector<int>& nums) {     
         unordered_map<int, int> mp;
         int nums_len = nums.size(), counter = 0;
         for (int i = 0; i < nums_len; ++i) {
