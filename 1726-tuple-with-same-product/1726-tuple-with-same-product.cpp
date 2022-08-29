@@ -14,7 +14,7 @@ struct Constant
 };
 
 
-Constant<300000> c;
+Constant<300> c;
 
 
 class Solution {
