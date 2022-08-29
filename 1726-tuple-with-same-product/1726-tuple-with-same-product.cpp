@@ -1,33 +1,37 @@
-template<size_t N>
-struct Constant
-{
-    constexpr Constant() :
-        arr()
-    {
-        arr[0] = 0;
-        arr[1] = 0;
-        for (int i = 2; i < N; ++i) {
-            arr[i] = ((i * (i - 1)) << 2);
-        }
-    }
-    int arr[N];
-};
-
-constexpr Constant<1000> c;
-
 class Solution {
 public:
-    int tupleSameProduct(vector<int>& nums) {     
-        unordered_map<int, int> mp;
-        int nums_len = nums.size(), counter = 0;
-        for (int i = 0; i < nums_len; ++i) {
-            for (int j = i + 1; j < nums_len; ++j) {
-                ++mp[nums[i] * nums[j]];
+    int tupleSameProduct(vector<int>& nums) {
+        //not possible for case where size<4
+        
+        if(nums.size()<4)
+            return 0;
+        //declare map and put the 1st entry/
+        unordered_map<int,int>m;
+        m.insert({1,0});
+        
+        
+        //now we need to map the product with how many times will it Occur in the array
+        for(int i=0;i<nums.size()-1;i++){
+            for(int j=i+1;j<nums.size();j++){
+                int pr=nums[i]*nums[j];
+                m[pr]++;  //increment in map
             }
         }
-        for (auto x : mp) {
-            counter += c.arr[x.second];
+        int ways=0;   //the final ans
+        
+        
+        //iterating in the map->
+        
+        for(auto i:m){
+            int p=nums[0]*nums[1];  
+            //checking for the product if same is present in the map, then add the ways
+            if(m.find(p)!=m.end()){
+            int x=i.second;
+            //x here is the number of entries with same prodcut
+            //formula for permutations..  add ways acc to number of entries.
+            ways+=(4*x*(x-1));
+           }
         }
-        return counter;
+        return ways;
     }
 };
