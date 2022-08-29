@@ -4,17 +4,19 @@ struct Constant
     constexpr Constant() :
         arr()
     {
+        int count = 0;
         arr[0] = 0;
         arr[1] = 0;
-        for (int i = 2; i < N; ++i) {
-            arr[i] = ((i * (i - 1)) << 2);
+        for (int i = 1; i < N; ++i) {
+            count += (i << 3);
+            arr[i + 1] = count;
         }
     }
-    int arr[N];
+    int arr[N + 1];
 };
 
 
-Constant<30> c;
+Constant<300> c;
 
 
 class Solution {
