@@ -17,7 +17,7 @@ struct Constant
 class Solution {
 public:
     int tupleSameProduct(vector<int>& nums) {
-        constexpr Constant<30> c;
+        static constexpr Constant<30> c;
         unordered_map<int, int> mp;
         int nums_len = nums.size(), counter = 0;
         for (int i = 0; i < nums_len; ++i) {
