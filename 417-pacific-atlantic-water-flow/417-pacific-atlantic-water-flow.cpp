@@ -50,6 +50,10 @@ public:
                 checkPass(pass, i, j, passed);
             }
         }
+        for (bool** x = passed; x < (passed + m); ++x) {
+            delete[] *x;
+        }
+        delete[] passed;
         vector<vector<int>> ans;
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
