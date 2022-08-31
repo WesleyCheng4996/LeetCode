@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> getMaximumXor(vector<int>& nums, int maximumBit) {
-        int target = (1 << maximumBit) - 1;
+        const int target = (1 << maximumBit) - 1;
         vector<int> ans;
         ans.reserve(nums.size());
 
