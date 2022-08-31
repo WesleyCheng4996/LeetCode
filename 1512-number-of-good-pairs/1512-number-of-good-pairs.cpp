@@ -6,7 +6,7 @@ struct Constant {
             arr[0] = 0;
             arr[1] = 0;
             for(int i = 2; i < N; ++i) {
-                arr[i] = ((i * (i - 1)) >> 1);
+                arr[i] = (i * (i - 1));
             }
         }
     short arr[N];
@@ -25,6 +25,6 @@ public:
         for(auto x: times_counter) {
             ans += c.arr[x];
         }
-        return ans;
+        return ans >> 1;
     }
 };
