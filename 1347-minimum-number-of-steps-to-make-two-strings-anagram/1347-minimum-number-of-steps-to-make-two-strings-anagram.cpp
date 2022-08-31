@@ -8,10 +8,9 @@ public:
             --words[t[i] - 'a'];
         }
         for(int i = 0; i < 26; ++i) {
-            if(words[i] > 0) {
-                sum += words[i];
-            }
+            sum += (words[i] ^ (words[i] >> 31)) - (words[i] >> 31);
+
         }
-        return sum;
+        return (sum >> 1);
     }
 };
