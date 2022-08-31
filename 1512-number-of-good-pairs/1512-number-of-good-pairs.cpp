@@ -19,10 +19,10 @@ public:
     int numIdenticalPairs(vector<int>& nums) {
         int ans = 0;
         char times_counter[101] = {0};
-        for(auto x: nums) {
+        for(auto& x: nums) {
             ++times_counter[x];
         }
-        for(auto x: times_counter) {
+        for(auto& x: times_counter) {
             ans += c.arr[x];
         }
         return ans >> 1;
