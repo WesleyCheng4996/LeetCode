@@ -29,7 +29,7 @@ public:
     bool find(int target) {
         return s.count(target);
     }
-    set<int> s;
+    unordered_set<int> s;
 };
 
 /**
