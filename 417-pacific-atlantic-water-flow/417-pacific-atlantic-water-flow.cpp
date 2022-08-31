@@ -22,7 +22,7 @@ class Solution {
 public:
     vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
         int m = heights.size(), n = heights[0].size();
-        vector<vector<char>> pass(m, vector<char>(n, false));
+        vector<vector<char>> pass(m, vector<char>(n, 0));
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
                 pass[i][j] =
