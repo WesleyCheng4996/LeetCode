@@ -22,9 +22,6 @@ class Solution {
 public:
     vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
         int m = heights.size(), n = heights[0].size();
-        if (n == 100 && m == 100) {
-            return vector<vector<int>>{ {0, 97}, { 0, 98 }, { 0, 99 }, { 98, 0 }, { 99, 0 }};
-        }
         vector<vector<char>> pass(m, vector<char>(n, false));
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
