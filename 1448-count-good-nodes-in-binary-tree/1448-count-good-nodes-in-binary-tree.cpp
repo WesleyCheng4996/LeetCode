@@ -13,7 +13,7 @@ class Solution {
 public:
     int goodNodes(TreeNode* root) {
         int count = 0;
-        DFS(root, count, -999999);
+        DFS(root, count, -9999999);
         return count;
     }
     
