@@ -20,16 +20,20 @@ public:
         return count;
     }
     
-    void DFS(TreeNode* node,int& count, int max) {
+    void DFS(TreeNode* node,int& count, int& max) {
         if(max <= node->val) {
             ++count;
             max = node->val;
         }
         if(node->left != nullptr) {
+            int temp = max;
             DFS(node->left, count, max);
+            max = temp;
         }
         if(node->right != nullptr) {
+            int temp = max;
             DFS(node->right, count, max);
+            temp = max;
         }
     }
 };
