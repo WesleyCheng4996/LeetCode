@@ -25,13 +25,14 @@ public:
             ++count;
             max = node->val;
         }
+        int temp;
         if(node->left != nullptr) {
-            int temp = max;
+            temp = max;
             DFS(node->left, count, max);
             max = temp;
         }
         if(node->right != nullptr) {
-            int temp = max;
+            temp = max;
             DFS(node->right, count, max);
             temp = max;
         }
