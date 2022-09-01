@@ -12,8 +12,11 @@
 class Solution {
 public:
     int goodNodes(TreeNode* root) {
+        if(root == nullptr) {
+            return 0;
+        }
         int count = 0;
-        DFS(root, count, -9999999);
+        DFS(root, count, root->val);
         return count;
     }
     
