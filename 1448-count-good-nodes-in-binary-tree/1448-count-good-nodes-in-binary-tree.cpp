@@ -11,8 +11,13 @@
  */
 class Solution {
 public:
-    int goodNodes(TreeNode* r, int ma = -10000) {
-        return r ? goodNodes(r->left, max(ma, r->val)) + goodNodes(r->right, max(ma, r->val)) + (r->val >= ma) : 0;
+    int goodNodes(TreeNode* root) {
+        if(root == nullptr) {
+            return 0;
+        }
+        int count = 0;
+        DFS(root, count, root->val);
+        return count;
     }
     
     void DFS(TreeNode* node,int& count, int& max) {
