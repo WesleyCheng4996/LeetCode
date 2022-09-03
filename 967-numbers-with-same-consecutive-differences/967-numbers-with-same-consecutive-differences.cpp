@@ -2,22 +2,24 @@ class Solution {
 public:
     vector<int> numsSameConsecDiff(int n, int k) {
         vector<int>ans;
+        int lower_bound = pow(10, n - 1);
         for(int i = 1; i <= 9; ++i) {
-            Function(ans, n, k, i);
+            Function(ans, lower_bound, k, i);
         }
         return ans;
     }
-    void Function(vector<int>& vec, int len, int k, int curr) {
+    void Function(vector<int>& vec, int lower_bound, int k, int curr) {
         
-        if(curr >= pow(10, len - 1)) {
+        if(curr >= lower_bound) {
             vec.push_back(curr);
             return;
         }
-        if((curr % 10) - k >= 0) {
-            Function(vec, len, k, (curr * 10 + (curr % 10 - k)));
+        int digit = curr % 10;
+        if(digit - k >= 0) {
+            Function(vec, lower_bound, k, (curr * 10 + digit - k));
         }
-        if((curr % 10 + k) < 10 && k != 0) {
-            Function(vec, len, k, (curr * 10 + (curr % 10 + k)));
+        if(digit + k < 10 && k != 0) {
+            Function(vec, lower_bound, k, (curr * 10 + digit + k));
         }
         return;
     }
