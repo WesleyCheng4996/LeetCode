@@ -19,8 +19,8 @@ public:
             check = 0b00000;
         };
         
-        for(int i = 0, end = word.size(); i < end; ++i) {
-            goto *labels[word[i] - 'a'];
+        for(char x: word) {
+            goto *labels[x - 'a'];
         _label_A:
             if((check & 0b01111) == 0) {
                 check = 0b10000;
