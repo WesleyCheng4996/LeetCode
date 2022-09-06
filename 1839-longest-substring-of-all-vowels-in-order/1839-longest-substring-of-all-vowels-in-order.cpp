@@ -19,7 +19,7 @@ public:
             check = 0b00000;
         };
         
-        for(const char &x: word) {
+        for(const char x: word) {
             goto *labels[x - 'a'];
         _label_A:
             if((check & 0b01111) == 0) {
