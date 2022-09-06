@@ -11,22 +11,20 @@
  */
 class Solution {
 public:
-    TreeNode* pruneTree(TreeNode* root) {
+    TreeNode* pruneTree(TreeNode*& root) {
         preOrder(root);
         return root;
     }
     bool preOrder(TreeNode*& node) {
-        bool record = node->val;
-        if(node->left != nullptr) {
-            record |= preOrder(node->left);
+        
+        if(node == nullptr) {
+            return false;
         }
-        if(node->right != nullptr) {
-            record |= preOrder(node->right);
-        }
-        if(record == true) {
+        
+        if(node->val | preOrder(node->left) | preOrder(node->right)) {
             return true;
         }
-        delete node;
+        
         node = nullptr;
         return false;
     }
