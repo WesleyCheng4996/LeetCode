@@ -11,6 +11,14 @@ public:
         int curr_len = 0, max_len = 0;
         char check = 0;
         
+        auto func = [&]() {
+            if(curr_len > max_len && check == 0b11111) {
+                    max_len = curr_len;
+                }
+            curr_len = 0;
+            check = 0b00000;
+        };
+        
         for(int i = 0, end = word.size(); i < end; ++i) {
             goto *labels[word[i] - 'a'];
         _label_A:
@@ -18,55 +26,37 @@ public:
                 check |= 0b10000;
                 ++curr_len;
             } else {
-                if(curr_len > max_len && check == 0b11111) {
-                    max_len = curr_len;
-                }
-                curr_len = 1;
-                check = 0b10000;
+                func();
+                ++curr_len;
+                check |= 0b10000;
             } continue;
         _label_E:
             if((check & 0b10111) == 0b10000) {
                 check |= 0b01000;
                 ++curr_len;
             } else {
-                if(curr_len > max_len && check == 0b11111) {
-                    max_len = curr_len;
-                }
-                curr_len = 0;
-                check = 0;
+                func();
             } continue;
         _label_I:
             if((check & 0b11011) == 0b11000) {
                 check |= 0b00100;
                 ++curr_len;
             } else {
-                if(curr_len > max_len && check == 0b11111) {
-                    max_len = curr_len;
-                }
-                curr_len = 0;
-                check = 0;
+                func();
             } continue;
         _label_O:
             if((check & 0b11101) == 0b11100) {
                 check |= 0b00010;
                 ++curr_len;
             } else {
-                if(curr_len > max_len && check == 0b11111) {
-                    max_len = curr_len;
-                }
-                curr_len = 0;
-                check = 0;
+                func();
             } continue;
         _label_U: 
             if((check & 0b11110) == 0b11110) {
                 check |= 0b00001;
                 ++curr_len;
             } else {
-                if(curr_len > max_len && check == 0b11111) {
-                    max_len = curr_len;
-                }
-                curr_len = 0;
-                check = 0;
+                func();
             } continue;
         }
         if(curr_len > max_len && check == 0b11111) {
