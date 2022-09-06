@@ -19,7 +19,7 @@ public:
                     }
                     break;
                 case 'e':
-                    if((check & 0b10000) == 0b10000 && (check & 0b00111) == 0) {
+                    if((check & 0b10111) == 0b10000) {
                         check |= 0b01000;
                         ++curr_len;
                     } else {
