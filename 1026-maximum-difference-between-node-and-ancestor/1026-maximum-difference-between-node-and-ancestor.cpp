@@ -11,20 +11,16 @@
  */
 class Solution {
 public:
-    int maxAncestorDiff(TreeNode* root) {
-        return max(DFS(root->right, root->val, root->val), DFS(root->left, root->val, root->val));
-    }
-    
-    int DFS(TreeNode* node, int ma, int mi) {
-        if(node == nullptr) {
+    int maxAncestorDiff(TreeNode* root, int ma = -99999, int mi = 999999) {
+        if(root == nullptr) {
             return ma - mi;
         }
-        if(node->val > ma) {
-            ma = node->val;
+        if(root->val > ma) {
+            ma = root->val;
         }
-        if(node->val < mi) {
-            mi = node->val;
+        if(root->val < mi) {
+            mi = root->val;
         }
-        return max(DFS(node->left, ma, mi), DFS(node->right, ma, mi));
+        return max(maxAncestorDiff(root->left, ma, mi), maxAncestorDiff(root->right, ma, mi));
     }
 };
