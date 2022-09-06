@@ -6,6 +6,6 @@ public:
             while (b < e && *(++b) == *e);
             while (b < e && *(--e) == *(b - 1));
         };
-        return e - b > 0 ? e - b + 1 : *(b - 1) != *b;
+        return (e - b > 0 ? e - b + 1 : *(b - 1) != *b);
     }
 };
