@@ -2,16 +2,10 @@ class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
         vector<int> ans(nums.size());
-        int pos = 0, neg = 1;
+        int sign[] = { 1, 0 };
         for(int i = 0, end = nums.size(); i < end; ++i) {
-            if(nums[i] > 0) {
-                ans[pos] = nums[i];
-                pos += 2;
-            }
-            else {
-                ans[neg] = nums[i];
-                neg += 2;
-            }
+            ans[sign[nums[i] > 0]] = nums[i];
+            sign[nums[i] > 0] += 2;
         }
         return ans;
     }
