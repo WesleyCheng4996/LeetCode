@@ -31,7 +31,7 @@ public:
                     }
                     break;
                 case 'i':
-                    if((check & 0b11000) == 0b11000 && (check & 0b00011) == 0) {
+                    if((check & 0b11011) == 0b11000) {
                         check |= 0b00100;
                         ++curr_len;
                     } else {
@@ -43,7 +43,7 @@ public:
                     }
                     break;
                 case 'o':
-                    if((check & 0b11100) == 0b11100 && (check & 0b00001) == 0) {
+                    if((check & 0b11101) == 0b11100) {
                         check |= 0b00010;
                         ++curr_len;
                     } else {
