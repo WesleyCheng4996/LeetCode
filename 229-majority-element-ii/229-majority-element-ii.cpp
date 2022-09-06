@@ -24,7 +24,6 @@ public:
                 --count_y;
             }
         }
-
         count_x = 0;
         count_y = 0;
         for (auto i : nums) {
