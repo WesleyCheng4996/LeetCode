@@ -1,32 +1,23 @@
 class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
-        if(nums == vector<int>{2,1,1,3,1,4,5,6}) {
-            return vector<int>{1};
-        }
-        if(nums == vector<int>{1,2,2,3,2,1,1,3}) {
-            return vector<int>{2, 1};
-        }
-        if(nums == vector<int>{2,1,1,3,1,4,5,6}) {
-            return vector<int>{1};
-        }
         vector<int> ans;
         ans.reserve(2);
         int x = 0, y = 0, count_x = 0, count_y = 0;
-         for (auto i : nums) {
-            if (count_x == 0) {
+        for (auto i : nums) {
+            if(x == i) {
+                ++count_x;
+            }
+            else if(y == i) {
+                ++count_y;
+            }
+            else if(count_x == 0) {
                 x = i;
-                ++count_x;
+                count_x = 1;
             }
-            else if (x == i) {
-                ++count_x;
-            }
-            else if (count_y == 0) {
+            else if(count_y == 0) {
                 y = i;
-                ++count_y;
-            }
-            else if (y == i) {
-                ++count_y;
+                count_y = 1;
             }
             else {
                 --count_x;
