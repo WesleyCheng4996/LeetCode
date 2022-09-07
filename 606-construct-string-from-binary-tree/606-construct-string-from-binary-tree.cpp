@@ -11,24 +11,16 @@
  */
 class Solution {
 public:
-    string tree2str(TreeNode* root, string str = "") {
-        return postOrder(root, str);
-    }
-    string postOrder(TreeNode* node, string& str) {
+    string tree2str(TreeNode* node, string str = "") {
         str += to_string(node->val);
         if(node->left != nullptr) {
-            str.push_back('(');
-            postOrder(node->left, str);
-            str.push_back(')'); 
+            str += '(' + tree2str(node->left) + ')';
         }
         else if(node->right != nullptr) {
-            str.push_back('(');
-            str.push_back(')'); 
+            str += "()";
         }
         if(node->right != nullptr) {
-            str.push_back('(');
-            postOrder(node->right, str);
-            str.push_back(')');
+            str += '(' + tree2str(node->right) + ')';
         }
         return str;
     }
