@@ -11,9 +11,9 @@ public:
         vector<int>::iterator last_it = first_it + 1;
         while(last_it - first_it < k) {
             if(first_it == b) {
-                ++last_it;
+                last_it += k - (last_it - first_it);
             } else if(last_it == e) {
-                --first_it;
+                first_it -= k - (last_it - first_it);
             } else if(abs(*(first_it - 1) - x) <= abs(*(last_it) - x)) {
                 --first_it;
             } else if(abs(*(first_it - 1) - x) > abs(*(last_it) - x)) {
