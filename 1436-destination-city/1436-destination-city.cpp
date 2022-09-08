@@ -1,7 +1,7 @@
 class Solution {
 public:
     string destCity(vector<vector<string>>& paths) {
-        set<string>st;
+        unordered_set<string>st;
         for(auto x: paths) {
             st.insert(x[1]);
         }
