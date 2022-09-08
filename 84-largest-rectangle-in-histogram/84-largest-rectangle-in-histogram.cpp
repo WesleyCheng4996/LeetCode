@@ -19,3 +19,6 @@ public:
         return ans;
     }
 };
+
+static bool     _foo = ios::sync_with_stdio(false);
+static ostream* _bar = cin.tie(NULL);
