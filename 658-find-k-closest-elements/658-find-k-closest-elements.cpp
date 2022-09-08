@@ -12,11 +12,17 @@ public:
         while(last_it - first_it < k) {
             if(first_it == b) {
                 last_it += k - (last_it - first_it);
-            } else if(last_it == e) {
+                break;
+            } 
+            if(last_it == e) {
                 first_it -= k - (last_it - first_it);
-            } else if(abs(*(first_it - 1) - x) <= abs(*(last_it) - x)) {
+                break;
+            }
+            int m = abs(*(first_it - 1) - x);
+            int n = abs(*(last_it) - x);
+            if(m <= n) {
                 --first_it;
-            } else if(abs(*(first_it - 1) - x) > abs(*(last_it) - x)) {
+            } else if(m > n) {
                 ++last_it;
             } 
         }
