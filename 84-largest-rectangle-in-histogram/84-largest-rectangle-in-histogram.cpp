@@ -5,7 +5,7 @@ public:
         int ans = 0, sz = heights.size(), area = 0, h = 0, x = 0;
         int* ptr = new int[sz + 1](), * b = ptr;
         for (int i = 0; i < sz; ++i) {
-            while (ptr > b && heights [*ptr]  >= heights[i]) {
+            while (ptr > b && heights [*ptr]  > heights[i]) {
                 h = heights[*ptr];
                 --ptr;
                 x = ptr > b ? (*ptr) + 1: 0;
