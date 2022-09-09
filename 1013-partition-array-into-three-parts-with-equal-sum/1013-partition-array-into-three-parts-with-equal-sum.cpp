@@ -5,7 +5,7 @@ public:
         if (total % 3 != 0) return false;
         for (int i = 0, sum = 0, idx_end = A.size(), part_end = total != 0 ? 2 : 3; i < idx_end && parts < part_end; ++i) {
           sum += A[i];
-          if (sum == total / 3) ++parts, sum = 0;
+          if (sum * 3 == total) ++parts, sum = 0;
         }
         return parts == (total != 0 ? 2 : 3);
     }
