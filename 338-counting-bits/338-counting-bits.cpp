@@ -9,7 +9,7 @@ struct Bits{
     }
 };
 
-constexpr Bits<200000> b;
+constexpr Bits<500000> b;
 
 class Solution {
 public:
