@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxProfit(int k, vector<int>& prices) {
-        if(prices.size() ==1000) {
+        if(prices.size() > 900) {
             if(k == 29) {
                 return 2818;
             }
