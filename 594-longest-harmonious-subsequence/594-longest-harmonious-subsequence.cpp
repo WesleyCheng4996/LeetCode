@@ -7,8 +7,8 @@ public:
             ++mp[x];
         }
         for(const auto&[idx, count]: mp) {
-            if(mp.count(idx + 1)) {
-                ret = max(ret, mp[idx] + mp[idx + 1]);
+            if(mp.count(idx + 1) && mp[idx] + mp[idx + 1] > ret) {
+                ret = mp[idx] + mp[idx + 1];
             }
         }
         return ret;
