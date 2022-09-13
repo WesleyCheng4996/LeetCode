@@ -1,12 +1,12 @@
 class Solution {
 public:
     int maxCount(int m, int n, vector<vector<int>>& ops) {
-        for(vector<int>vec: ops) {
-            if(m > vec[0]) {
-                m = vec[0];
+        for(int i = 0, end = ops.size(); i < end; ++i) {
+            if(m > ops[i][0]) {
+                m = ops[i][0];
             }
-            if(n > vec[1]) {
-                n = vec[1];
+            if(n > ops[i][1]) {
+                n = ops[i][1];
             }
         }
         return m * n;
