@@ -9,7 +9,7 @@ public:
             mp[str].push_back(strs[i]);
         }
         for(const auto &[str, vec]: mp) {
-            ret.push_back(move(vec));
+            ret.push_back(vec);
         }
         return ret;
     }
