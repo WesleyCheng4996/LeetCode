@@ -15,6 +15,6 @@ constexpr Array<10010> A;
 class Solution {
 public:
     int minOperations(int n) {
-        return A.arr[n];
+        return (n >> 1) * ((n + 1) >> 1);
     }
 };
