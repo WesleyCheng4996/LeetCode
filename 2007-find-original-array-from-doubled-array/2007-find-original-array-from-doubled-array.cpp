@@ -32,5 +32,3 @@ public:
     }
 };
 
-static auto foo = std::ios::sync_with_stdio(false);
-static auto fo = std::cin.tie(nullptr);
