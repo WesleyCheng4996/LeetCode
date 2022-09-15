@@ -9,6 +9,6 @@ public:
                 ++count;
             }
         }
-        return pow(-1, count & 1);
+        return count & 1 ? -1 : 1;
     }
 };
