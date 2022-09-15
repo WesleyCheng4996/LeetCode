@@ -6,8 +6,8 @@ public:
         int size = changed.size();
     
         ret.reserve(size);
-        for (int x : changed) {
-            ++count[x];
+        for (int i = 0; i < size; ++i) {
+            ++count[changed[i]];
         }
         
         if((count[0] & 1) == 1) {
@@ -32,3 +32,5 @@ public:
     }
 };
 
+static auto foo = std::ios::sync_with_stdio(false);
+static auto fo = std::cin.tie(nullptr);
