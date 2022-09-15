@@ -17,19 +17,6 @@ public:
 
         }
         
-        /*for(int x: changed) {
-            if(check[x] == true) {
-                continue;
-            }
-            if(count[x] > count[x << 1]) {
-                return vector<int>();
-            } else {
-                count[x << 1] -= count[x];
-                ret.insert(ret.end(), count[x], x);
-            }
-            check[x] = true;
-        }*/
-        
         for(int i = 0; i < 50001; ++i) {
             if(count[i] == 0) {
                 continue;
