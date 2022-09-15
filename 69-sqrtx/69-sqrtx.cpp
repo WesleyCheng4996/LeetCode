@@ -1,8 +1,8 @@
 struct Pow_2 {
-    long long arr[46341];
+    int arr[46341];
     constexpr Pow_2() :
     arr() {
-        for(long long i = 0; i < 46341; ++i) {
+        for(int i = 0; i < 46341; ++i) {
             arr[i] = i * i; 
         }
     }
