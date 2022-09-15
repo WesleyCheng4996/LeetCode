@@ -1,45 +1,44 @@
 class Solution {
 public:
     vector<int> findOriginalArray(vector<int>& changed) {
-        unordered_map<int, int>mp;
+        int count[100001] = { 0 };
         vector<int> ret;
-        int idx = 0, size = changed.size();
-        
-        sort(changed.begin(), changed.end());
-        mp.reserve(size);
+        int size = changed.size();
+    
         ret.reserve(size);
         for (int x : changed) {
-            ++mp[x];
+            ++count[x];
         }
         
-        if(changed[0] == 0) {
-            if((mp[0] & 1) == 1) {
-                return vector<int>();
-            } else {
-                ret.insert(ret.end(), mp[0] >> 1, 0);
-            }
-            do{
-                ++idx;
-            } while(changed[idx] != 0);
+        if((count[0] & 1) == 1) {
+            return ret;
+        } else {
+            ret.insert(ret.end(), count[0] >> 1, 0);
+
         }
-        if(idx == 0) {
-            if(mp[changed[0]] > mp[changed[0] << 1]) {
-                return vector<int>();
-            } else {
-                mp[changed[0] << 1] -= mp[changed[0]];
-                ret.insert(ret.end(), mp[changed[0]], changed[0]);
-            }
-            ++idx;
-        }
-        for (; idx < size; ++idx) {
-            if(changed[idx] == changed[idx - 1]) {
+        
+        /*for(int x: changed) {
+            if(check[x] == true) {
                 continue;
             }
-            if(mp[changed[idx]] > mp[changed[idx] << 1]) {
+            if(count[x] > count[x << 1]) {
                 return vector<int>();
             } else {
-                mp[changed[idx] << 1] -= mp[changed[idx]];
-                ret.insert(ret.end(), mp[changed[idx]], changed[idx]);
+                count[x << 1] -= count[x];
+                ret.insert(ret.end(), count[x], x);
+            }
+            check[x] = true;
+        }*/
+        
+        for(int i = 0; i < 50001; ++i) {
+            if(count[i] == 0) {
+                continue;
+            }
+            if(count[i] > count[i << 1]) {
+                return vector<int>();
+            } else {
+                count[i << 1] -= count[i];
+                ret.insert(ret.end(), count[i], i);
             }
         }
         return ret;
