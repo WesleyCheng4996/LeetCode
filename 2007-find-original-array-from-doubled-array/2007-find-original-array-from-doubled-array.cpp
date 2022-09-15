@@ -4,6 +4,7 @@ public:
         vector<int> ret;
         unordered_map<int, int>mp;
         sort(changed.begin(), changed.end());
+        ret.reserve(changed.size());
         for (int x : changed) {
             ++mp[x];
         }
@@ -23,3 +24,4 @@ public:
         return ret;
     }
 };
+
