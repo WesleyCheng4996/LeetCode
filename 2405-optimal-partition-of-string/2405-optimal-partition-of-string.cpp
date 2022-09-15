@@ -1,7 +1,7 @@
 class Solution {
 public:
     int partitionString(string s) {
-        char *st = new char[128]();
+        char *st = new char[123]();
         int ret = 1;
         for(char ch: s) {
             if(st[ch] == 1) {
