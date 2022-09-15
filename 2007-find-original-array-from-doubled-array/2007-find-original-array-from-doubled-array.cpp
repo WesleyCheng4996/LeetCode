@@ -14,7 +14,6 @@ public:
             return ret;
         } else {
             ret.insert(ret.end(), count[0] >> 1, 0);
-
         }
         
         for(int i = 0; i < 50001; ++i) {
