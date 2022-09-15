@@ -6,8 +6,8 @@ public:
         int size = changed.size();
     
         ret.reserve(size);
-        for (int i = 0; i < size; ++i) {
-            ++count[changed[i]];
+        for (const int &x : changed) {
+            ++count[x];
         }
         
         if((count[0] & 1) == 1) {
