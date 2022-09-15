@@ -8,7 +8,7 @@ struct Pow_2 {
     }
 };
 
-static constexpr Pow_2 pow_2;
+constexpr Pow_2 pow_2;
 
 class Solution {
 public:
