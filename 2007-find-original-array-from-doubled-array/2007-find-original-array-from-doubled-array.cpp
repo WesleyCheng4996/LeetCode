@@ -1,29 +1,45 @@
 class Solution {
 public:
     vector<int> findOriginalArray(vector<int>& changed) {
-        vector<int> ret;
         unordered_map<int, int>mp;
-        set<int> st(changed.begin(), changed.end());
-        ret.reserve(changed.size());
+        vector<int> ret;
+        int idx = 0, size = changed.size();
+        
+        sort(changed.begin(), changed.end());
+        mp.reserve(size);
+        ret.reserve(size);
         for (int x : changed) {
             ++mp[x];
         }
         
-        if(st.count(0) == 1 ) {
+        if(changed[0] == 0) {
             if((mp[0] & 1) == 1) {
                 return vector<int>();
             } else {
                 ret.insert(ret.end(), mp[0] >> 1, 0);
             }
-            st.erase(0);
+            do{
+                ++idx;
+            } while(changed[idx] != 0);
         }
-        
-        for (int x : st) {
-            if(mp[x] > mp[x << 1]) {
+        if(idx == 0) {
+            if(mp[changed[0]] > mp[changed[0] << 1]) {
                 return vector<int>();
             } else {
-                mp[x << 1] -= mp[x];
-                ret.insert(ret.end(), mp[x], x);
+                mp[changed[0] << 1] -= mp[changed[0]];
+                ret.insert(ret.end(), mp[changed[0]], changed[0]);
+            }
+            ++idx;
+        }
+        for (; idx < size; ++idx) {
+            if(changed[idx] == changed[idx - 1]) {
+                continue;
+            }
+            if(mp[changed[idx]] > mp[changed[idx] << 1]) {
+                return vector<int>();
+            } else {
+                mp[changed[idx] << 1] -= mp[changed[idx]];
+                ret.insert(ret.end(), mp[changed[idx]], changed[idx]);
             }
         }
         return ret;
