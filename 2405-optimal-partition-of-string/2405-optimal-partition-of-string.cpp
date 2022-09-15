@@ -1,14 +1,14 @@
 class Solution {
 public:
     int partitionString(string s) {
-        char *st = new char[123]();
+        int num = 0;
         int ret = 1;
         for(char ch: s) {
-            if(st[ch] == 1) {
+            if(num & (1 << (ch - 'a'))) {
                 ++ret;
-                memset(st + 97, 0, 26);
+                num = 0;
             }
-            ++st[ch];   
+            num |= (1 << (ch - 'a'));
         }
         return ret;
     }
