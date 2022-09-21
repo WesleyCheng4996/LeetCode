@@ -5,12 +5,13 @@ public:
         int s = accumulate(nums.begin(), nums.end(), 0, [](int x, int y) {return ((y & 1) == 0? x + y: x);});
         ret.reserve(queries.size());
         for(vector<int> &vec: queries) {
-            if((nums[vec[1]] & 1) == 0) {
+            int &x = nums[vec[1]];
+            if((x & 1) == 0) {
                 s -= nums[vec[1]];
             }
-            nums[vec[1]] += vec[0];
-            if((nums[vec[1]] & 1) == 0) {
-                s += nums[vec[1]];
+            x += vec[0];
+            if((x & 1) == 0) {
+                s += x;
             }
             ret.push_back(s);
         }
