@@ -7,7 +7,7 @@ public:
         for(vector<int> &vec: queries) {
             int &x = nums[vec[1]];
             if((x & 1) == 0) {
-                s -= nums[vec[1]];
+                s -= x;
             }
             x += vec[0];
             if((x & 1) == 0) {
