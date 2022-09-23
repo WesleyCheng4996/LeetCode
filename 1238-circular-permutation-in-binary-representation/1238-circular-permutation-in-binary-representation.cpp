@@ -8,7 +8,7 @@ public:
         ret.reserve(count);
         
         while(ret.size() < count) {
-            for(int i = 0; i <= n; ++i) {
+            for(int i = 0; i < 32; ++i) {
                 if(record[start ^ (1 << i)] == false) {
                     start ^= (1 << i);
                     record[start] = true;
