@@ -6,7 +6,8 @@ public:
         for(int i = 1; i <= n; ++i) {
             ret <<= (32 - __builtin_clz(i));
             ret += i;
-            ret %= mod;
+            if(ret >= mod)
+                ret %= mod;
         }
         return (ret);
     }
