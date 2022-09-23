@@ -7,7 +7,7 @@ public:
             ret += i;
             ret %= mod;
         }
-        return (ret % mod);
+        return (ret);
     }
 
 };
