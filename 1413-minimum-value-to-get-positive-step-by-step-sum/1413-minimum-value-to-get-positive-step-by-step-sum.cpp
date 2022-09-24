@@ -8,6 +8,6 @@ public:
                 ret = sum;
             }
         }
-        return -ret + 1;
+        return 1 - ret;
     }
 };
