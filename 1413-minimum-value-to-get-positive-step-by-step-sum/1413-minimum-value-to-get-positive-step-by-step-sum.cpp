@@ -8,6 +8,6 @@ public:
                 ret = sum;
             }
         }
-        return ~ret + 2;
+        return ~(--ret) + 1;
     }
 };
