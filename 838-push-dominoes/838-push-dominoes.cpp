@@ -27,18 +27,14 @@ public:
                     r = -i;
                 }
                 else {
-                    if (((r + i) & 1) == 0) {
-                        for (int j = r + 1, e = (r + i) >> 1; j < e; ++j) {
+                    for (int j = r + 1, e = (r + i) >> 1; j <= e; ++j) {
                             dominoes[j] = 'R';
-                        }
-                    }
-                    else {
-                        for (int j = r + 1, e = (r + i) >> 1; j <= e; ++j) {
-                            dominoes[j] = 'R';
-                        }
                     }
                     for (int j = ((r + i) >> 1) + 1; j < i; ++j) {
                             dominoes[j] = 'L';
+                    }
+                    if (((r + i) & 1) == 0) {
+                        dominoes[(r + i) >> 1] = '.';
                     }
                     r = -i;
                 }
