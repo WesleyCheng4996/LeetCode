@@ -1,7 +1,7 @@
 class Solution {
 public:
     string pushDominoes(string dominoes) {
-        int r = -2;
+        int r = 100001;
         for (int i = 0, end = dominoes.size(); i < end; ++i) {
             if (dominoes[i] == '.') {
                 continue;
@@ -15,17 +15,16 @@ public:
                 r = i;
             }
             else {
-                if (r == -2) {
+                if (r == 100001) {
                     for (int j = 0; j < i; ++j) {
                         dominoes[j] = 'L';
                     }
                 }
-                else if (r == -1) {
-                    int c = i - 1;
-                    while (dominoes[c] == '.') {
-                        dominoes[c--] = 'L';
+                else if (r < 0) {
+                    for(int j = -r + 1; j < i; ++j) {
+                        dominoes[j] = 'L';
                     }
-                    r = -1;
+                    r = -i;
                 }
                 else {
                     if (((r + i) & 1) == 0) {
@@ -44,7 +43,7 @@ public:
                             dominoes[j] = 'L';
                         }
                     }
-                    r = -1;
+                    r = -i;
                 }
             }
         }
