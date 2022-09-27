@@ -1,14 +1,24 @@
-// The rand7() API is already defined for you.
-// int rand7();
-// @return a random integer in the range 1 to 7
-
 class Solution {
 public:
-  int rand10() {
-        int rand40 = 40;
-        while (rand40 >= 40) {
-            rand40 = (rand7() - 1) * 7 + rand7() - 1;
+    int rand2() {
+        int num = rand7();
+        while (num == 7) {
+            num = rand7();
         }
-        return rand40 % 10 + 1;
+        
+        return num <= 3;
+    }
+    
+    int rand5() {
+        int num = rand7();
+        while (num > 5) {
+            num = rand7();
+        }
+        
+        return num;
+    }
+    
+    int rand10() {
+        return (rand2() * 5) + rand5();
     }
 };
