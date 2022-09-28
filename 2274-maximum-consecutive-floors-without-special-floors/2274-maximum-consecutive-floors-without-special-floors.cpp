@@ -14,3 +14,7 @@ public:
         return --ret;
     }
 };
+
+static const auto s = ios::sync_with_stdio(0);
+static const auto ss = cin.tie(0);
+static const auto sss = cout.tie(0);
