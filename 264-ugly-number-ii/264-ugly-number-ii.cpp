@@ -1,5 +1,5 @@
 struct ugly {
-    ugly() :
+    constexpr ugly() :
         arr() {
         arr[0] = 1;
         int i = 0, j = 0, k = 0, idx = 1;
@@ -15,7 +15,7 @@ struct ugly {
     int arr[1691];
 };
 
-ugly u;
+constexpr ugly u;
 
 class Solution {
 public:
