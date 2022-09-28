@@ -14,15 +14,17 @@ constexpr Table table;
 class Solution {
 public:
     int numSub(string s) {
+        static constexpr void* labels[2] = { &&ZERO, &&ONE };
         int ret = 0, len = 0;
         for(char ch: s) {
-            if(ch == '1') {
-                ++len;
-            } else {
-                ret += table.arr[len];
-                ret %= 1000000007;
-                len = 0;
-            }
+            goto* labels[ch == '1'];
+        ONE:
+            ++len;
+            continue;
+        ZERO:
+            ret += table.arr[len];
+            ret %= 1000000007;
+            len = 0;
         }
         return (ret + table.arr[len]) % 1000000007;
     }
