@@ -1,5 +1,5 @@
 struct Table{
-  constexpr Table():
+   Table():
     arr() {
         for(int i = 0; i < 101; ++i) {
             for(int j = 0; j < 101; ++j) {
@@ -19,7 +19,7 @@ struct Table{
     int arr[101][101];
 };
 
-constexpr Table table;
+ Table table;
 
 class Solution {
 public:
