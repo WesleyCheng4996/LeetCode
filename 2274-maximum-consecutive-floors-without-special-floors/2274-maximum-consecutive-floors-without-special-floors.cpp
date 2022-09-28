@@ -25,9 +25,6 @@ public:
 	}
 };
 
-//IO
-int _IO=[](){
-	ios::sync_with_stdio(0);
-	cin.tie(0); //cout.tie(0);
-	return 0;
-}();
+static const auto s = ios::sync_with_stdio(0);
+static const auto ss = cin.tie(0);
+static const auto sss = cout.tie(0);
