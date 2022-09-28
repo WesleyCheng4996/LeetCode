@@ -2,11 +2,11 @@ struct Table {
     Table() :
     arr() {
         arr[1] = 1;
-        for(int i = 2; i < 100000; ++i) {
+        for(int i = 2; i < 90001; ++i) {
             arr[i] = (arr[i - 1] + i) % 1000000007;
         }
     }
-    int arr[100000];
+    int arr[90001];
 };
 
 Table table;
