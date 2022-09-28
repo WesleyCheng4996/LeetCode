@@ -1,5 +1,5 @@
 struct Table {
-    Table() :
+    constexpr Table() :
     arr() {
         arr[1] = 1;
         for(int i = 2; i < 90001; ++i) {
@@ -9,7 +9,7 @@ struct Table {
     int arr[90001];
 };
 
-Table table;
+constexpr Table table;
 
 class Solution {
 public:
