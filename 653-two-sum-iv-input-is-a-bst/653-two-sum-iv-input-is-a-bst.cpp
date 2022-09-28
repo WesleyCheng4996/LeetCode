@@ -12,11 +12,11 @@
 class Solution {
 public:
     bool findTarget(TreeNode* root, int k) {
-        unordered_set<int> st;
+        set<int> st;
         return find(root, k, st);
     }
     
-    bool find(TreeNode* root, int k, unordered_set<int> &st) {
+    bool find(TreeNode* root, int k, set<int> &st) {
         if(root == nullptr) {
             return false;
         }
