@@ -6,10 +6,11 @@ public:
         special.push_back(top + 1);
         sort(special.begin(), special.end());
         for(int i = 0, end = special.size() - 1; i < end; ++i) {
-            if(ret < special[i + 1] - special[i]) {
-                ret = special[i + 1] - special[i];
+            int diff = special[i + 1] - special[i];
+            if(ret < diff) {
+                ret = diff;
             }
         }
-        return ret - 1;
+        return --ret;
     }
 };
