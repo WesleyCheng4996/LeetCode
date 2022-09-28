@@ -11,6 +11,6 @@ public:
                 ret = diff;
             }
         }
-        return --ret;
+        return ret - 1;
     }
 };
