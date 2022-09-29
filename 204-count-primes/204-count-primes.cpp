@@ -1,4 +1,3 @@
-
 struct Prime {
     Prime() :
     arr() {
