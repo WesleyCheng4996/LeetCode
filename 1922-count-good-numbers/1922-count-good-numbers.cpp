@@ -20,7 +20,8 @@ constexpr Pow p;
 class Solution {
 public:
     int countGoodNumbers(long long n) {
-        unsigned long long num = (n >> 1), ret = n & 1 ? 5 : 1, bit = 0;
+        unsigned long long num = (n >> 1), ret = n & 1 ? 5 : 1;
+        int bit = 0;
         while(num != 0) {
             if(num & 1) {
                 ret *= p.pow_4[bit];
