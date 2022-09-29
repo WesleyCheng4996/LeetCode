@@ -16,8 +16,8 @@ public:
     int numSub(string s) {
         static constexpr void* labels[2] = { &&ZERO, &&ONE };
         int ret = 0, len = 0;
-        for(int i = 0, end = s.size(); i < end; ++i) {
-            goto* labels[s[i] == '1'];
+        for(char c : s) {
+            goto* labels[c == '1'];
         ONE:
             ++len;
             continue;
