@@ -1,6 +1,6 @@
 template<int N>
 struct Array {
-    bool count[N];
+    int count[N];
     Array() :
     count() {
         for(int i = 1; i < N; ++i) {
@@ -16,7 +16,11 @@ struct Array {
                 case 23:
                 case 29:
                 case 31:
-                    count[i] = true;
+                    count[i] = count[i - 1] + 1;
+                    break;
+                default:
+                    count[i] = count[i - 1];
+                    break;
             }
         }
     }
@@ -25,6 +29,6 @@ Array<1000001> a;
 class Solution {
 public:
     int countPrimeSetBits(int left, int right) {
-        return accumulate(a.count + left, a.count + right + 1, 0);
+        return a.count[right] - a.count[left - 1];
     }
 };
