@@ -3,25 +3,19 @@ struct Array {
     int count[N];
     Array() :
     count() {
+        int arr[30] = { 0 };
+        arr[2] = 1;
+        arr[3] = 1;
+        arr[5] = 1;
+        arr[7] = 1;
+        arr[11] = 1;
+        arr[13] = 1;
+        arr[17] = 1;
+        arr[19] = 1;
+        arr[23] = 1;
+        arr[29] = 1;
         for(int i = 1; i < N; ++i) {
-            switch(__builtin_popcount(i)) {
-                case 2:
-                case 3:
-                case 5:
-                case 7:
-                case 11:
-                case 13:
-                case 17:
-                case 19:
-                case 23:
-                case 29:
-                case 31:
-                    count[i] = count[i - 1] + 1;
-                    break;
-                default:
-                    count[i] = count[i - 1];
-                    break;
-            }
+            count[i] = count[i - 1] + arr[__builtin_popcount(i)];
         }
     }
 };
