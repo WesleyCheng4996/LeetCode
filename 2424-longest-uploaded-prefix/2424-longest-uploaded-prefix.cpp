@@ -1,7 +1,4 @@
 class LUPrefix {
-    bool *arr_;
-    int curr_ = 0;
-    
 public:
     LUPrefix(int n) : arr_(new bool[n + 1]()) {
             
@@ -17,6 +14,9 @@ public:
         }
         return curr_;
     }
+private:
+    bool *arr_;
+    int curr_ = 0;
 };
 
 /**
