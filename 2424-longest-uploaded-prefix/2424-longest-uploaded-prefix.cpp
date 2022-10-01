@@ -1,32 +1,22 @@
 class LUPrefix {
+    bool *arr_;
+    int curr_ = 0;
+    
 public:
-    LUPrefix(int n) {
-        ++n;
-        len_ = n;
-        curr_ = 0;
-        arr_ = new bool[n]();
+    LUPrefix(int n) : arr_(new bool[n + 1]()) {
+            
     }
-    ~LUPrefix() {
-        delete []arr_;
-    }
+    
     void upload(int video) {
-        arr_[video] = true;
-        for(int i = curr_ + 1; i < len_; ++i) {
-            if(arr_[i]) {
-                ++curr_;
-            } else {
-                break;
-            }
-        }
+        arr_[video - 1] = true;
     }
     
     int longest() {
+        while (arr_[curr_]) {
+            ++curr_;
+        }
         return curr_;
     }
-private:
-    int len_;
-    int curr_;
-    bool *arr_;
 };
 
 /**
