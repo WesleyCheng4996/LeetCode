@@ -4,8 +4,8 @@ public:
         vector<int> ret;
         ret.reserve(encoded.size() + 1);
         ret.push_back(first);
-        for(int i = 0; i < encoded.size(); ++i) {
-            ret.push_back(ret.back() ^ encoded[i]);
+        for(int x : encoded) {
+            ret.push_back(ret.back() ^ x);
         }
         return ret;
     }
