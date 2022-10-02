@@ -10,6 +10,7 @@ public:
         for(vector<int> &vec : queries) {
             ret.push_back(result[vec[0]] ^ result[vec[1] + 1]);
         }
+        delete[] result;
         return ret;
     }
 };
