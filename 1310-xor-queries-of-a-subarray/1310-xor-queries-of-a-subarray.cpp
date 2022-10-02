@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> xorQueries(vector<int>& arr, vector<vector<int>>& queries) {
-        vector<int>result(arr.size() + 1);
+        int *result = new int[arr.size() + 1]();
         for(int i = 0, end = arr.size(), k = 0; i < end; ++i) {
             result[i + 1] = k ^= arr[i];
         }
