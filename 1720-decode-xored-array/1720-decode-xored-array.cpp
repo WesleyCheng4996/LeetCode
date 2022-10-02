@@ -1,11 +1,11 @@
 class Solution {
 public:
     vector<int> decode(vector<int>& encoded, int first) {
-        vector<int> ret;
-        ret.reserve(encoded.size() + 1);
-        ret.push_back(first);
+        vector<int> ret(encoded.size() + 1);
+        int idx = -1;
+        ret[++idx] = first;
         for(int x : encoded) {
-            ret.push_back(ret.back() ^ x);
+            ret[++idx] = (ret[idx] ^ x);
         }
         return ret;
     }
