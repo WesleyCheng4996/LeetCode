@@ -4,7 +4,10 @@ public:
         int *count = new int[bank.size()]();
         for(int i = 0, end = bank.size(); i < end; ++i) {
             count[i] = accumulate(bank[i].begin(), bank[i].end(), 0, 
-                                  [](int sum, int x){return sum + x - '0'; }
+                                  [](int sum, int x)
+                                  {
+                                      return sum + (x == '1'); 
+                                  }
                                  );
         }
         int last = 0;
