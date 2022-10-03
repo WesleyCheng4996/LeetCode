@@ -15,7 +15,7 @@ class Solution {
 public:
     int findMinFibonacciNumbers(int k) {
         int ret = 0;
-        for(int i = 44; k; --i) {
+        for(int i = (upper_bound(fib.arr, fib.arr + 45, k) - fib.arr - 1); k; --i) {
             if(k >= fib.arr[i]) {
                 ++ret;
                 k -= fib.arr[i++];
