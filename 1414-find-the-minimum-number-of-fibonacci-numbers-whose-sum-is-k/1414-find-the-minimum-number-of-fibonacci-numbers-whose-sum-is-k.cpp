@@ -16,8 +16,7 @@ public:
     int findMinFibonacciNumbers(int k) {
         int ret = 0;
         while(k) {
-            int i = (upper_bound(fib.arr, fib.arr + 45, k) - fib.arr - 1);
-            k -= fib.arr[i];
+            k -= fib.arr[(upper_bound(fib.arr, fib.arr + 45, k) - fib.arr - 1)];
             ++ret;
         }
         return ret;
