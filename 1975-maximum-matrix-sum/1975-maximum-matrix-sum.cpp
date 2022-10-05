@@ -2,24 +2,21 @@ class Solution {
 public:
     long long maxMatrixSum(vector<vector<int>>& matrix) {
         long long ret = 0, minnum = abs(matrix[0][0]), sign = 0;
-        for(vector<int> &vec : matrix) {
-            for(int x : vec) {
-                
-                if(x < 0) {
-                    int num = abs(x);
+        return accumulate(matrix.begin(), matrix.end(), 0LL, [&](long long sum, vector<int>vec) {
+            return sum += accumulate(vec.begin(), vec.end(), 0LL, [&](long long sum, int num) {
+                if(num < 0) {
+                    sign ^= 1;
+                    if(-num < minnum) {
+                        minnum = -num;
+                    }
+                    return sum - num;
+                } else {
                     if(num < minnum) {
                         minnum = num;
                     }
-                    ++sign;
-                    ret += num;
-                } else {
-                    if(x < minnum) {
-                        minnum = x;
-                    }
-                    ret += x;
+                    return sum + num;
                 }
-            }
-        }
-        return ret - (sign & 1 ? (minnum << 1) : 0);
+            });
+        }) - (sign ? minnum << 1 : 0);
     }
 };
