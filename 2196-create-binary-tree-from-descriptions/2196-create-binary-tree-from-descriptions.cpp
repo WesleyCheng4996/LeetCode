@@ -16,6 +16,8 @@ public:
         set<int> root;
         set<int>son;
         for (vector<int>& vec : descriptions) {
+            root.insert(vec[0]);
+            son.insert(vec[1]);
             if(nodes[vec[0]] == 0) {
                 nodes[vec[0]] = new TreeNode(vec[0]);
             }
@@ -27,8 +29,6 @@ public:
             } else {
                 nodes[vec[0]]->right = nodes[vec[1]];
             }
-            root.insert(vec[0]);
-            son.insert(vec[1]);
         }
         
         for(int x : root) {
