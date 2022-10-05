@@ -12,11 +12,11 @@
 class Solution {
 public:
     TreeNode* addOneRow(TreeNode* root, int val, int depth) {
-        function(&root, val, depth, 1, false);
+        function(&root, val, depth - 1, false);
         return root;
     }
-    void function(TreeNode** root, int val, int depth, int level, bool isright) {
-        if (level == depth) {
+    void function(TreeNode** root, int val, int depth, bool isright) {
+        if (depth == 0) {
             if(isright) {
                 (*root) = new TreeNode(val, nullptr, (*root));
             } else {
@@ -26,7 +26,7 @@ public:
         if(*root == nullptr) {
             return;
         }
-        function(&(*root)->left, val, depth, level + 1 ,false);
-        function(&(*root)->right, val, depth, level + 1, true);
+        function(&(*root)->left, val, depth - 1, false);
+        function(&(*root)->right, val, depth - 1, true);
     }
 };
