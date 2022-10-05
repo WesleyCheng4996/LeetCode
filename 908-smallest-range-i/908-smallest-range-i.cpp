@@ -1,11 +1,8 @@
 class Solution {
 public:
     int smallestRangeI(vector<int>& nums, int k) {
-        int ma = nums[0], mi = nums[0];
-        for(int x : nums) {
-            ma = max(ma, x);
-            mi = min(mi, x);
-        }
+        int ma = *max_element(nums.begin(),nums.end());
+        int mi = *min_element(nums.begin(),nums.end());
         return ((ma - mi) >= (k << 1) ? (ma - mi) - (k << 1) : 0);
     }
 };
