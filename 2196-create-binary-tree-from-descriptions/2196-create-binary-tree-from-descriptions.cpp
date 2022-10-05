@@ -12,30 +12,35 @@
 class Solution {
 public:
     TreeNode* createBinaryTree(vector<vector<int>>& descriptions) {
-        TreeNode* nodes[100001] = { 0 };
-        unordered_set<int> root;
-        unordered_set<int>son;
+        unordered_map<int, int[2]>nodes;
+        unordered_map<int, bool>ishead;
+        int head;
         for (vector<int>& vec : descriptions) {
-            root.insert(vec[0]);
-            son.insert(vec[1]);
-            if(nodes[vec[0]] == 0) {
-                nodes[vec[0]] = new TreeNode(vec[0]);
+            nodes[vec[0]][vec[2]] = vec[1];
+            if(ishead.count(vec[0]) == 0) {
+                ishead[vec[0]] = true;
             }
-            if(nodes[vec[1]] == 0) {
-                nodes[vec[1]] = new TreeNode(vec[1]);
-            }
-            if(vec[2]) {
-                nodes[vec[0]]->left = nodes[vec[1]];
-            } else {
-                nodes[vec[0]]->right = nodes[vec[1]];
+            ishead[vec[1]] = false;
+        }
+        for(auto& [val, b] : ishead) {
+            if(b) {
+                head = val;
+                break;
             }
         }
-        
-        for(int x : root) {
-            if(son.count(x) == 0) {
-                return nodes[x];
-            }
-        }
-        return nullptr;
+        return creatNode(new TreeNode(head), nodes);;
     }
+    
+    TreeNode* creatNode(TreeNode* root, unordered_map<int, int[2]>& mp) {
+        if(mp[root->val][0]) {
+            root->right = new TreeNode(mp[root->val][0]);
+            creatNode(root->right, mp);
+        }
+        if(mp[root->val][1]) {
+            root->left = new TreeNode(mp[root->val][1]);
+            creatNode(root->left, mp);
+        }
+        return root;
+    }
+    
 };
