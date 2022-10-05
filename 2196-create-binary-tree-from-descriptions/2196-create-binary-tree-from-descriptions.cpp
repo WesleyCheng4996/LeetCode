@@ -12,12 +12,9 @@
 class Solution {
 public:
     TreeNode* createBinaryTree(vector<vector<int>>& descriptions) {
-        unordered_map<int, TreeNode*>nodes;
-        unordered_set<int> root;
-        unordered_set<int>son;
-        nodes.reserve(descriptions.size());
-        root.reserve(descriptions.size());
-        son.reserve(descriptions.size());
+        map<int, TreeNode*>nodes;
+        set<int> root;
+        set<int>son;
         for (vector<int>& vec : descriptions) {
             if(nodes.count(vec[0]) == 0) {
                 nodes.insert(pair<int, TreeNode*>(vec[0], new TreeNode(vec[0])));
