@@ -13,8 +13,8 @@ class Solution {
 public:
     TreeNode* createBinaryTree(vector<vector<int>>& descriptions) {
         TreeNode* nodes[100001] = { 0 };
-        set<int> root;
-        set<int>son;
+        unordered_set<int> root;
+        unordered_set<int>son;
         for (vector<int>& vec : descriptions) {
             root.insert(vec[0]);
             son.insert(vec[1]);
