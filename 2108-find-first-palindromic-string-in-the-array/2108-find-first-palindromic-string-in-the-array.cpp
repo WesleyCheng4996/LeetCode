@@ -1,14 +1,11 @@
 class Solution {
 public:
     string firstPalindrome(vector<string>& words) {
-        for(string s : words) {
-            if(isPalindrome(s)) {
-                return s;
+        for(string str : words) {
+            if(str == string(str.rbegin(), str.rend())) {
+                return str;
             }
         }
         return "";
-    }
-    bool isPalindrome(const string &str) {
-        return str == string(str.rbegin(), str.rend());
     }
 };
