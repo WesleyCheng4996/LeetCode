@@ -4,9 +4,7 @@ public:
         if((tomatoSlices & 1) || tomatoSlices < (cheeseSlices << 1) || tomatoSlices > (cheeseSlices << 2)) {
             return vector<int>();
         }
-        int diff = tomatoSlices - (cheeseSlices << 1);
-        int jburger = diff >> 1;
-        int sburger = cheeseSlices - jburger;
-        return vector<int> { jburger, sburger };
+        int jburger = (tomatoSlices - (cheeseSlices << 1)) >> 1;
+        return vector<int> { jburger, cheeseSlices - jburger };
     }
 };
