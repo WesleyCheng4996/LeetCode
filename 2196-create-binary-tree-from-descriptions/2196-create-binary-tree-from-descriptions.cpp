@@ -41,17 +41,4 @@ public:
         }
         return nullptr;
     }
-    
-    TreeNode* creatNode(TreeNode* root, unordered_map<int, int[2]>& mp) {
-        if(mp[root->val][0]) {
-            root->right = new TreeNode(mp[root->val][0]);
-            creatNode(root->right, mp);
-        }
-        if(mp[root->val][1]) {
-            root->left = new TreeNode(mp[root->val][1]);
-            creatNode(root->left, mp);
-        }
-        return root;
-    }
-    
 };
