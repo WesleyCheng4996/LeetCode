@@ -1,10 +1,6 @@
 class TimeMap {
     unordered_map<string, map<int, string>> mp;
 public:
-    TimeMap() {
-        
-    }
-    
     void set(string key, string value, int timestamp) {
         mp[key][timestamp] = value;
     }
