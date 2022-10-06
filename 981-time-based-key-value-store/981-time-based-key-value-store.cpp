@@ -15,18 +15,14 @@ public:
         
     }
     
-    void set(string key, string value, int timestamp) {
-        mp[key].push_back(Time_Value{timestamp, value});
-    }
-    
-    string get(string key, int timestamp) {
-        vector<Time_Value>& vec = mp[key];
-        if(vec.empty()) {
-            return "";
-        }
-        vector<Time_Value>::iterator it = (upper_bound(vec.begin(), vec.end(), timestamp) - 1);
-        return it < vec.begin() ? "" : it->value;
-    }
+    unordered_map<string, map<int, string>> m;
+void set(string key, string value, int timestamp) {
+  m[key].insert({ timestamp, value });
+}
+string get(string key, int timestamp) {
+  auto it = m[key].upper_bound(timestamp);
+  return it == m[key].begin() ? "" : prev(it)->second;
+}
 };
 
 /**
