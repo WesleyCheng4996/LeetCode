@@ -1,28 +1,18 @@
-struct Time_Value {
-    Time_Value(int t, string v) : time(t), value(v) {}
-    int time;
-    string value;
-    bool operator<(Time_Value& other) { return this->time < other.time; }
-    bool operator>(Time_Value& other) { return this->time > other.time; }
-    bool operator<=(Time_Value& other) { return this->time <= other.time; }
-    bool operator>=(Time_Value& other) { return this->time >= other.time; }
-    operator int() const { return time; }
-};
 class TimeMap {
-    unordered_map<string, vector<Time_Value>> mp;
+    unordered_map<string, map<int, string>> mp;
 public:
     TimeMap() {
         
     }
     
-    unordered_map<string, map<int, string>> m;
-void set(string key, string value, int timestamp) {
-  m[key].insert({ timestamp, value });
-}
-string get(string key, int timestamp) {
-  auto it = m[key].upper_bound(timestamp);
-  return it == m[key].begin() ? "" : prev(it)->second;
-}
+    void set(string key, string value, int timestamp) {
+        mp[key][timestamp] = value;
+    }
+    
+    string get(string key, int timestamp) {
+        auto it = mp[key].upper_bound(timestamp);
+        return it == mp[key].begin() ? "" : prev(it)->second;
+    }
 };
 
 /**
