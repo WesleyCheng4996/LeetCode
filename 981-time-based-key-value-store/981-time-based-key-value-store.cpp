@@ -2,7 +2,7 @@ class TimeMap {
     unordered_map<string, map<int, string>> mp;
 public:
     TimeMap() : mp() {
-        mp.reserve(1000000);
+        mp.reserve(200000);
     }
     
     void set(string key, string value, int timestamp) {
