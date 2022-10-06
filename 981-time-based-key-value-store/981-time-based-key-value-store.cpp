@@ -4,8 +4,6 @@ struct Time_Value {
     string value;
     bool operator<(Time_Value& other) { return this->time < other.time; }
     bool operator>(Time_Value& other) { return this->time > other.time; }
-    bool operator<=(Time_Value& other) { return this->time <= other.time; }
-    bool operator>=(Time_Value& other) { return this->time >= other.time; }
     operator int() const { return time; }
 };
 class TimeMap {
