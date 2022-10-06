@@ -1,41 +1,33 @@
+struct Time_Value {
+    Time_Value(int t, string v) : time(t), value(v) {}
+    int time;
+    string value;
+    bool operator<(Time_Value& other) { return this->time < other.time; }
+    bool operator>(Time_Value& other) { return this->time > other.time; }
+    bool operator<=(Time_Value& other) { return this->time <= other.time; }
+    bool operator>=(Time_Value& other) { return this->time >= other.time; }
+    operator int() const { return time; }
+};
 class TimeMap {
+    unordered_map<string, vector<Time_Value>> mp;
 public:
-  std::unordered_map<std::string, std::vector<std::pair<int,std::string>>> m;
-
-  TimeMap() {
-    // *** need this constructor to boost the speed ***  
-    ios_base::sync_with_stdio(false);
+    TimeMap() {
+        ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-  }
-  
-  void set(string key, string value, int timestamp) {
-    m[key].push_back({timestamp,value});
-  }
-  
-  string get(string key, int timestamp) {
-    std::vector<std::pair<int,std::string>> &v = m[key];
+    }
     
-    /**
-    std::cout << "get " << key << ", " << timestamp << std::endl;
-    for (auto &a : v) {
-      std::cout << a.first << ", " << a.second << std::endl;
+    void set(string key, string value, int timestamp) {
+        mp[key].push_back(Time_Value{timestamp, value});
     }
-    std::cout << std::endl;
-    /**/
-
-    if (v.empty()) {
-      return "";
+    
+    string get(string key, int timestamp) {
+        vector<Time_Value>& vec = mp[key];
+        if(vec.empty()) {
+            return "";
+        }
+        vector<Time_Value>::iterator it = (upper_bound(vec.begin(), vec.end(), timestamp) - 1);
+        return it < vec.begin() ? "" : it->value;
     }
-    if (v[0].first > timestamp) {
-      return "";
-    }
-    //if (v.back().first <= timestamp) {
-      //return v.back().second;
-    //}
-
-    return std::lower_bound(v.rbegin(),v.rend(),std::pair<int,std::string>{timestamp,""},
-				      [](const std::pair<int,std::string> &a, const std::pair<int,std::string> &b) { return (a.first > b.first); })->second;
-  }
 };
 
 /**
