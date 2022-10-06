@@ -1,19 +1,41 @@
 class TimeMap {
-    unordered_map<string, map<int, string>> mp;
 public:
-    TimeMap() : mp() {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
-    }
+  std::unordered_map<std::string, std::vector<std::pair<int,std::string>>> m;
+
+  TimeMap() {
+    // *** need this constructor to boost the speed ***  
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+  }
+  
+  void set(string key, string value, int timestamp) {
+    m[key].push_back({timestamp,value});
+  }
+  
+  string get(string key, int timestamp) {
+    std::vector<std::pair<int,std::string>> &v = m[key];
     
-    void set(string key, string value, int timestamp) {
-        mp[key][timestamp] = value;
+    /**
+    std::cout << "get " << key << ", " << timestamp << std::endl;
+    for (auto &a : v) {
+      std::cout << a.first << ", " << a.second << std::endl;
     }
-    
-    string get(string key, int timestamp) {
-        auto it = mp[key].upper_bound(timestamp);
-        return it == mp[key].begin() ? "" : prev(it)->second;
+    std::cout << std::endl;
+    /**/
+
+    if (v.empty()) {
+      return "";
     }
+    if (v[0].first > timestamp) {
+      return "";
+    }
+    //if (v.back().first <= timestamp) {
+      //return v.back().second;
+    //}
+
+    return std::lower_bound(v.rbegin(),v.rend(),std::pair<int,std::string>{timestamp,""},
+				      [](const std::pair<int,std::string> &a, const std::pair<int,std::string> &b) { return (a.first > b.first); })->second;
+  }
 };
 
 /**
