@@ -2,7 +2,8 @@ class TimeMap {
     unordered_map<string, map<int, string>> mp;
 public:
     TimeMap() : mp() {
-        mp.reserve(200000);
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
     }
     
     void set(string key, string value, int timestamp) {
