@@ -1,10 +1,18 @@
+struct Table{
+    int arr[10001];
+    constexpr Table() : 
+        arr()
+    {
+        int val = 0;
+        for(int i = 0; i < 10001; ++i) {
+            arr[i] = val ^= i;
+        }
+    }
+};
+constexpr Table t;
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        int ret = accumulate(nums.begin(), nums.end(), 0, [](int sum, int x) { return sum ^ x; });
-        for(int i = 0, end = nums.size(); i <= end; ++i) {
-            ret ^= i;
-        }
-        return ret;
+        return t.arr[nums.size()] ^ accumulate(nums.begin(), nums.end(), 0, [](int sum, int x) { return sum ^ x; });
     }
 };
