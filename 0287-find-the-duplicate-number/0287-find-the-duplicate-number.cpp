@@ -1,13 +1,24 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        bitset<100001>st;
-        for(int x : nums) {
-            if(st[x] == 1) {
-                return x;
-            }
-            st[x] = 1;
+        int fast = 0;
+        int slow = 0;
+        
+        do
+        {
+            fast = nums[nums[fast]];
+            slow = nums[slow];
         }
-        return 0;
+        while (fast != slow);
+        
+        slow = 0;
+        
+        while (fast != slow)
+        {
+            fast = nums[fast];
+            slow = nums[slow];
+        }
+        
+        return slow;
     }
 };
