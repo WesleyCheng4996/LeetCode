@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool checkIfPangram(string s) {
-        set<int>st;
+        unordered_set<int>st;
         for(char c : s) {
             st.insert(c);
         }
