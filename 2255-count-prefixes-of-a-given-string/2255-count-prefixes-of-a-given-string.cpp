@@ -1,10 +1,6 @@
 class Solution {
 public:
     int countPrefixes(vector<string>& words, string s) {
-       int ret = 0;
-        for(string& x : words) {
-            ret += (s.find(x) == 0);
-        }
-        return ret;
+        return accumulate(words.begin(), words.end(), 0, [&](int sum, string& x) { return sum + (s.find(x) == 0); });
     }
 };
