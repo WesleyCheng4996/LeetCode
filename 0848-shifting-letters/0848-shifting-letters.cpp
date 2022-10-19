@@ -17,12 +17,12 @@ constexpr Table t;
 class Solution {
 public:
     string shiftingLetters(string s, vector<int>& shifts) {
+        s.back() = t.mat[shifts.back() %= 26][s.back() - 'a'];
         for(int i = shifts.size() - 2; i >= 0; --i) {
-            shifts[i] += shifts[i + 1] % 26;
+            shifts[i] += shifts[i + 1];
+            s[i] = t.mat[shifts[i] %= 26][s[i] - 'a'];
         }
-        for(int i = 0; i < s.size(); ++i) {
-            s[i] = t.mat[shifts[i] % 26][s[i] - 'a'];
-        }
+
         return s;
     }
 };
