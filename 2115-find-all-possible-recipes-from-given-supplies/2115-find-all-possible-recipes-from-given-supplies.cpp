@@ -30,9 +30,7 @@ public:
         for (string& food : recipes) {
             bool cancook = true;
             for (string& need : food_ingredients[food]) {
-                if ((cancook &= (sup.count(need) || cook(need, food_ingredients, sup, food_visited))) == false) {
-                    break;
-                }
+                cancook &= (sup.count(need) || cook(need, food_ingredients, sup, food_visited));
             }
             if (cancook) {
                 ret.push_back(food);
