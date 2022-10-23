@@ -11,7 +11,9 @@ public:
 
         bool cancook = true;
         for (string& ingredient : food_ingredients[food]) {
-            cancook &= (haved.count(ingredient) || cook(ingredient, food_ingredients, haved, food_visited));
+            if ((cancook &= (haved.count(ingredient) || cook(ingredient, food_ingredients, haved, food_visited))) == false) {
+                break;
+            }
         }
         if (cancook) {
             haved.insert(food);
