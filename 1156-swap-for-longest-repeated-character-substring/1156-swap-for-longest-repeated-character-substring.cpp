@@ -23,8 +23,6 @@ public:
         }
         for (int i = 0; i < comp.size(); ++i) {
             ret = max(ret, comp[i].first + (count[comp[i].second] > 1));
-        }
-        for (int i = 0; i < comp.size(); ++i) {
             if (comp[i].first == 1) {
                 if (i > 0 && i < comp.size() - 1 && comp[i - 1].second == comp[i + 1].second) {
                     ret = max(ret, comp[i - 1].first + comp[i + 1].first + (count[comp[i - 1].second] > 2));
