@@ -3,7 +3,9 @@ public:
     Solution(vector<int>& nums) {
         for(int i = 0; i < nums.size(); ++i) {
             num_idxs[nums[i]].push_back(i);
-            ++idx[nums[i]];
+        }
+        for(auto& [key, val] : num_idxs) {
+            idx[key, val.size()];
         }
     }
     
