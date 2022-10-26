@@ -18,7 +18,9 @@ public:
     unordered_map<int, vector<int>>num_idxs;
     unordered_map<int, int>idx;
 };
-
+static auto s = ios_base::sync_with_stdio(false);
+static auto ss = cin.tie(nullptr);
+static auto sss = cout.tie(nullptr);
 /**
  * Your Solution object will be instantiated and called as such:
  * Solution* obj = new Solution(nums);
