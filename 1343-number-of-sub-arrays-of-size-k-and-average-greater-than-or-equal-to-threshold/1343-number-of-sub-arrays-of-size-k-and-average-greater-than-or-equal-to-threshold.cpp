@@ -7,6 +7,6 @@ public:
             ret += (sum >= threshold);
             sum += arr[k] - arr[i];
         }
-        return ret + (sum >= threshold);
+        return ret += (sum >= threshold);
     }
 };
