@@ -1,0 +1,26 @@
+class Solution {
+public:
+    Solution(vector<int>& nums) {
+        for(int i = 0; i < nums.size(); ++i) {
+            num_idxs[nums[i]].push_back(i);
+        }
+        for(auto& [key, val] : num_idxs) {
+            idx[key, val.size()];
+        }
+    }
+    
+    int pick(int target) {
+        if(idx[target] == 0) {
+            idx[target] = num_idxs[target].size();
+        }
+        return num_idxs[target][--idx[target]];
+    }
+    unordered_map<int, vector<int>>num_idxs;
+    unordered_map<int, int>idx;
+};
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution* obj = new Solution(nums);
+ * int param_1 = obj->pick(target);
+ */
