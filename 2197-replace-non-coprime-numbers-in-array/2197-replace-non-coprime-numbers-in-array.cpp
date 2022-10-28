@@ -4,16 +4,15 @@ public:
         return b == 0 ? a : GCD(b, a % b);
     }
     vector<int> replaceNonCoprimes(vector<int>& nums) {
-        vector<int>stk;
-        stk.push_back(nums.front());
+        int* stk = new int[nums.size()], * ptr = stk;
+        *ptr++ = nums.front();
         for(int i = 1; i < nums.size(); ++i) {
             int gcd;
-            while(!stk.empty() && (gcd = GCD(stk.back(), nums[i])) != 1) {
-                nums[i] *= stk.back() / gcd;
-                stk.pop_back();
+            while(stk != ptr && (gcd = GCD(*(ptr - 1), nums[i])) != 1) {
+                nums[i] *= *(--ptr) / gcd;
             }
-            stk.push_back(nums[i]);
+            *ptr++ = nums[i];
         }
-        return stk;
+        return vector<int>(stk, ptr);
     }
 };
