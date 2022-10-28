@@ -11,22 +11,15 @@ public:
                 }
                 else {
                     if (!pq.empty() && pq.top() < diff) {
-                        if (bricks >= pq.top()) {
-                            bricks -= pq.top();
-                            pq.pop();
-                            pq.push(diff);
-                        }
-                        else {
-                            return i - 1;
-                        }
+                        bricks -= pq.top();
+                        pq.pop();
+                        pq.push(diff);
                     }
                     else {
-                        if (bricks >= diff) {
-                            bricks -= diff;
-                        }
-                        else {
-                            return i - 1;
-                        }
+                        bricks -= diff;
+                    }
+                    if (bricks < 0) {
+                        return i - 1;
                     }
                 }
             }
