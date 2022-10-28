@@ -24,6 +24,10 @@ public:
     unordered_set<int>st;
 };
 
+static auto s = ios_base::sync_with_stdio(false);
+static auto ss = cin.tie(nullptr);
+static auto sss = cout.tie(nullptr);
+
 /**
  * Your RandomizedSet object will be instantiated and called as such:
  * RandomizedSet* obj = new RandomizedSet();
