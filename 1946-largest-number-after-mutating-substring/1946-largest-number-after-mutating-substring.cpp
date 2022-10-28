@@ -13,3 +13,7 @@ public:
         return num;
     }
 };
+
+static auto s = ios_base::sync_with_stdio(false);
+static auto ss = cin.tie(nullptr);
+static auto sss = cout.tie(nullptr);
