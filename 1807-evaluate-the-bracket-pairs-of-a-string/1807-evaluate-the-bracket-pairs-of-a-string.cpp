@@ -2,13 +2,13 @@ class Solution {
 public:
     string evaluate(string s, vector<vector<string>>& knowledge) {
         unordered_map<string, string>mp;
-        string ret = "";
+        string ret = "", key;
         for(vector<string>& vec : knowledge) {
             mp[vec[0]] = vec[1];
         }
         for(int i = 0; i < s.size(); ++i) {
             if(s[i] == '(') {
-                string key = "";
+                key = "";
                 while(++i < s.size() && s[i] != ')') {
                     key.push_back(s[i]);
                 }
