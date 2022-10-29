@@ -3,6 +3,7 @@ public:
     string evaluate(string s, vector<vector<string>>& knowledge) {
         unordered_map<string, string>mp;
         string ret = "", key;
+        mp.reserve(knowledge.size());
         for(vector<string>& vec : knowledge) {
             mp[vec[0]] = vec[1];
         }
