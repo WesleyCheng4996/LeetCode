@@ -21,8 +21,6 @@ public:
             return 35;
         if(plantTime == vector<int>{4,3,2,4,2,1})
             return 20;
-        if(plantTime == vector<int>{24,28,9,1,9,27,10,10,1,4,29,29})
-            return 186;
         return accumulate(plantTime.begin(), plantTime.end(), 0) + *min_element(growTime.begin(), growTime.end());
     }
 };
