@@ -8,23 +8,20 @@ public:
         }
         for(int i = 0; i < s.size(); ++i) {
             if(s[i] == '(') {
-                ++i;
-                int j = 0;
-                while(i + j < s.size() && s[i + j] != ')') {
-                    ++j;
+                string key = "";
+                while(++i < s.size() && s[i] != ')') {
+                    key.push_back(s[i]);
                 }
-                string key = s.substr(i, j);
                 if(mp.count(key)) {
                     ret += mp[key];
                 } else {
                     ret.push_back('?');
                 }
-                i += j;
             } else {
              ret.push_back(s[i]);   
             }
         }
-        return regex_replace(ret, regex("\\([a-z]*\\)"), "?");;
+        return ret;
     }
 };
 
