@@ -26,3 +26,6 @@ public:
         return accumulate(plantTime.begin(), plantTime.end(), 0) + *min_element(growTime.begin(), growTime.end());
     }
 };
+static auto s = ios_base::sync_with_stdio(false);
+static auto ss = cin.tie(nullptr);
+static auto sss = cout.tie(nullptr);
