@@ -1,7 +1,7 @@
 class Solution {
 public:
     string getHint(string secret, string guess) {
-        unordered_map<char, int>count, countt;
+        int count[60] = { 0 }, countt[60] = { 0 };
         int A = 0, B = 0;
         for(int i = 0; i < secret.size(); ++i) {
             if(secret[i] == guess[i]) {
