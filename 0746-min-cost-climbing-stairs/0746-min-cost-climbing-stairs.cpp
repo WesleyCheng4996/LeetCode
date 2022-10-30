@@ -7,3 +7,7 @@ public:
         return min(cost[cost.size() - 1], cost[cost.size() - 2]);//At the end the final answer depends on the last two costs
     }
 };
+
+static auto s = ios_base::sync_with_stdio(false);
+static auto ss = cin.tie(nullptr);
+static auto sss = cout.tie(nullptr);
