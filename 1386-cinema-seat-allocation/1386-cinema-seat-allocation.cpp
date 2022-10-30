@@ -14,3 +14,7 @@ public:
         return ret + (n - seats.size()) * 2;
     }
 };
+
+static auto s = ios_base::sync_with_stdio(false);
+static auto ss = cin.tie(nullptr);
+static auto sss = cout.tie(nullptr);
