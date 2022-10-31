@@ -10,16 +10,12 @@
 
 class Solution {
 public:
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        return findLCA(root, p, q);
-    }
-    
-    TreeNode* findLCA(TreeNode* node, TreeNode* p, TreeNode* q) {
+    TreeNode* lowestCommonAncestor(TreeNode* node, TreeNode* p, TreeNode* q) {
         if(node == nullptr || node == p || node == q) {
             return node;
         }
-        TreeNode* left = findLCA(node->left, p, q);
-        TreeNode* right = findLCA(node->right, p, q);
+        TreeNode* left = lowestCommonAncestor(node->left, p, q);
+        TreeNode* right = lowestCommonAncestor(node->right, p, q);
         if(left == nullptr) {
             return right;
         } else if(right != nullptr) {
