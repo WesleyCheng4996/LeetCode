@@ -7,10 +7,10 @@ public:
             ++val_count[nums[i]];
         }
         ret.push_back(val_count.rbegin()->first);
-        for(int i = 0, j = k; j < nums.size(); ++i, ++j) {
-            --val_count[nums[i]];
-            if(val_count[nums[i]] == 0) {
-                val_count.erase(nums[i]);
+        for(int j = k; j < nums.size(); ++j) {
+            --val_count[nums[j - k]];
+            if(val_count[nums[j - k]] == 0) {
+                val_count.erase(nums[j - k]);
             }
             ++val_count[nums[j]];
             ret.push_back(val_count.rbegin()->first);
