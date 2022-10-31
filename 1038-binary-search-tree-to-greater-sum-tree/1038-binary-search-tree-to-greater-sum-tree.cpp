@@ -11,17 +11,14 @@
  */
 class Solution {
 public:
+    int val = 0;
     TreeNode* bstToGst(TreeNode* root) {
-        int i = 0;
-        builtGST(root, i);
-        return root;
-    }
-    void builtGST(TreeNode* node, int& parentVal) {
-        if(node == nullptr) {
-            return;
+        if(root == nullptr) {
+            return nullptr;
         }
-        builtGST(node->right, parentVal);
-        parentVal = node->val += parentVal;
-        builtGST(node->left, parentVal);
+        bstToGst(root->right);
+        val = root->val += val;
+        bstToGst(root->left);
+        return root;
     }
 };
