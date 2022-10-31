@@ -38,7 +38,7 @@ public:
     int amountOfTime(TreeNode* root, int start) {
         unordered_map<int, vector<int>>edge;
         builtGraph(root, edge);
-        unordered_map<int, bool>visited;
+        unordered_map<int, bool>visited(edge.size() + 1);
         return DFS(edge, visited, start, 0);
     }
 };
