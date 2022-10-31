@@ -20,10 +20,8 @@ public:
             return right;
         } else if(right != nullptr) {
             return node;
-        } else {
-            return left;
         }
-        return nullptr;
+        return left;
     }
 };
 
