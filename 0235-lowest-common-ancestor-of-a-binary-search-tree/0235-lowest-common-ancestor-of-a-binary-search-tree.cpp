@@ -15,10 +15,7 @@ public:
     }
     
     TreeNode* findLCA(TreeNode* node, int p, int q) {
-        if(node == nullptr) {
-            return nullptr;
-        }
-        if(node->val == p || node->val == q) {
+        if(node == nullptr || node->val == p || node->val == q) {
             return node;
         }
         TreeNode* left = findLCA(node->left, p, q);
