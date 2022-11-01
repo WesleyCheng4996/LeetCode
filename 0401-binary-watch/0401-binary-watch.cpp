@@ -1,8 +1,8 @@
 class Solution {
 public:
     vector<string> readBinaryWatch(int turnedOn) {
-        vector<vector<string>> h(100, vector<string>());
-        vector<vector<string>> m(100, vector<string>());
+        vector<vector<string>> h(11, vector<string>());
+        vector<vector<string>> m(11, vector<string>());
         vector<string>ret;
         for(int i = 0; i < 12; ++i) {
             h[__builtin_popcount(i)].push_back(to_string(i));
