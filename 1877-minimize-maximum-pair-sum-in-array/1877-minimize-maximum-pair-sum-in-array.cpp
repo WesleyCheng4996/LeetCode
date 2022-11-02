@@ -1,10 +1,10 @@
 class Solution {
 public:
     int minPairSum(vector<int>& nums) {
-        int ret = INT_MIN;
+        int ret = INT_MIN, sz = (nums.size() >> 1);
         sort(nums.begin(), nums.end());
-        for(int i = 0; i < nums.size() / 2; ++i) {
-            ret = max(ret, nums[i] + nums[nums.size() - i - 1]);
+        for(int i = 0; i < sz;) {
+            ret = max(ret, nums[i] + nums[nums.size() -  (++i)]);
         }
         return ret;
     }
