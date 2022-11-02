@@ -20,3 +20,7 @@ public:
         return accumulate(nums.begin(), nums.end(), 0) ==  minSubArray(nums) ? maxSubArray(nums) : max(maxSubArray(nums), accumulate(nums.begin(), nums.end(), 0) - minSubArray(nums)) ;
     }
 };
+
+static auto s = ios_base::sync_with_stdio(false);
+static auto ss = cin.tie(nullptr);
+static auto sss = cout.tie(nullptr);
