@@ -1,23 +1,18 @@
 class Solution {
 public:
-    int Map(int num, vector<int>& mapping) {
-        if(num == 0) {
+    int Map(int n, vector<int>& mapping) {
+        int value=0,t=1;
+        if(n==0)
             return mapping[0];
+        while(n!=0){
+            int temp=n%10;            
+            value=mapping[temp]*t+value;
+            t=t*10, n=n/10;
         }
-        vector<int>digits;
-        int ret = 0;
-        digits.reserve(10);
-        while(num) {
-            digits.push_back(num % 10);
-            num /= 10;
-        }
-        for(int i = digits.size() - 1; i >= 0; --i) {
-            ret *= 10;
-            ret += mapping[digits[i]];
-        }
-        return ret;
+        return value;
     }
     vector<int> sortJumbled(vector<int>& mapping, vector<int>& nums) {
+        
         vector<pair<int, int>>vec;
         vector<int>ret;
         vec.reserve(nums.size());
