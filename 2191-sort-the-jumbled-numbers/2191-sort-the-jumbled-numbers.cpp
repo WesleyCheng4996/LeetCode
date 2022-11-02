@@ -19,7 +19,9 @@ public:
             mp[Map(num, mapping)].push_back(num);
         }
         for(auto& [_, vec] : mp) {
-            ret.insert(ret.end(), vec.begin(), vec.end());
+            for(int x : vec) {
+                ret.push_back(x);
+            }
         }
         return ret;
     }
