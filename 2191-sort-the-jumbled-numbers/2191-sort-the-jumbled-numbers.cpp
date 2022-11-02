@@ -12,18 +12,16 @@ public:
         return value;
     }
     vector<int> sortJumbled(vector<int>& mapping, vector<int>& nums) {
-        map<int, vector<int>>mp;
-        vector<int>ret;
-        ret.reserve(nums.size());
-        for(int num : nums) {
-            mp[Map(num, mapping)].push_back(num);
+        multimap<int,int> m;
+        for(int a:nums){            
+            int temp=Map(a,mapping);                        
+            m.insert(make_pair(temp,a));
+        }        
+        nums.clear();
+        for(auto itr=m.begin();itr!=m.end();itr++){
+            nums.push_back(itr->second);
         }
-        for(auto& [_, vec] : mp) {
-            for(int x : vec) {
-                ret.push_back(x);
-            }
-        }
-        return ret;
+        return nums;
     }
 };
 
