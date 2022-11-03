@@ -1,51 +1,14 @@
-struct Table {
-    int arr[31];
-    long long arr2[100005];
-    constexpr Table() :
-    arr(), arr2()
-    {
-        for(int i = 0; i < 31; ++i) {
-            arr[i] = (1 << i);
-        }
-        arr2[1] = 1;
-        for(int i = 2; i < 100005; ++i) {
-            arr2[i] = arr2[i - 1] + i;
-            arr2[i] %= 1000000007;
-        }
-    }
-};
-
-constexpr Table table;
-
 class Solution {
 public:
-    int countPairs(vector<int>& deliciousness) {
-        unordered_map<int, int>mp;
-        vector<int>b(33, true);
-        unsigned int ret = 0;
-        for(int x : deliciousness) {
-            ++mp[x];
-        }
-        for(int x : deliciousness) {
-            for(int i = 0; x + x >= table.arr[i]; ++i) {
-                if(x + x == table.arr[i]) {
-                    if(b[__builtin_clz(x)]) {
-                        ret += table.arr2[mp[x] - 1];
-                        ret %= 1000000007;
-                        b[__builtin_clz(x)] = false;
-                    } else {
-                        continue;
-                    }
-                } else if(mp.count(table.arr[i] - x)) {
-                    ret += mp[table.arr[i] - x];
-                    ret %= 1000000007;
-                }
+    int countPairs(vector<int>& a) {
+        unordered_map<int,int> lks;
+        long long ans=0;
+        for(int x : a){
+            for(int i=1;i<=(1<<22);i*=2){
+                if(lks.count(i-x)) ans+=lks[i-x];
             }
+            lks[x]+=1;
         }
-        return ret % 1000000007;
+        return ans % (int)(1e9 + 7);
     }
 };
-
-static auto s = ios_base::sync_with_stdio(false);
-static auto ss = cin.tie(nullptr);
-static auto sss = cout.tie(nullptr);
