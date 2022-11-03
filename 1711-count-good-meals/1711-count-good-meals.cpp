@@ -22,7 +22,7 @@ public:
     int countPairs(vector<int>& deliciousness) {
         unordered_map<int, int>mp;
         vector<int>b(33, true);
-        unsigned long long ret = 0;
+        unsigned int ret = 0;
         for(int x : deliciousness) {
             ++mp[x];
         }
