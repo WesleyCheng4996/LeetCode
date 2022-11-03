@@ -1,14 +1,14 @@
 struct Table {
-    int arr[31];
-    long long arr2[100005];
+    int power_2[31];
+    long long arr2[100000];
     constexpr Table() :
-    arr(), arr2()
+    power_2(), arr2()
     {
         for(int i = 0; i < 31; ++i) {
-            arr[i] = (1 << i);
+            power_2[i] = (1 << i);
         }
         arr2[1] = 1;
-        for(int i = 2; i < 100005; ++i) {
+        for(int i = 2; i < 100000; ++i) {
             arr2[i] = arr2[i - 1] + i;
             arr2[i] %= 1000000007;
         }
@@ -27,16 +27,16 @@ public:
             ++mp[x];
         }
         for(int x : deliciousness) {
-            for(int i = 0; x + x >= table.arr[i]; ++i) {
-                if(x + x == table.arr[i]) {
+            for(int i = 0; x + x >= table.power_2[i]; ++i) {
+                if(x + x == table.power_2[i]) {
                     if(b[__builtin_clz(x)]) {
                         ret += table.arr2[mp[x] - 1];
                         b[__builtin_clz(x)] = false;
                     } else {
                         continue;
                     }
-                } else if(mp.count(table.arr[i] - x)) {
-                    ret += mp[table.arr[i] - x];
+                } else if(mp.count(table.power_2[i] - x)) {
+                    ret += mp[table.power_2[i] - x];
                 }
             }
         }
