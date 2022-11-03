@@ -7,7 +7,6 @@ struct Table {
             power_2[i] = (1 << i);
         }
     }
-
 };
 
 constexpr Table table;
