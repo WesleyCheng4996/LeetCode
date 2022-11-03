@@ -21,7 +21,7 @@ class Solution {
 public:
     int countPairs(vector<int>& deliciousness) {
         unordered_map<int, int>mp;
-        vector<int>b(32, true);
+        vector<int>b(33, true);
         unsigned int ret = 0;
         for(int x : deliciousness) {
             ++mp[x];
