@@ -1,6 +1,6 @@
 struct Table {
     int power_2[31];
-    long long arr2[100000];
+    unsigned int arr2[100000];
     constexpr Table() :
     power_2(), arr2()
     {
