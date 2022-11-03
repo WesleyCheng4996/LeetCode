@@ -21,26 +21,17 @@ class Solution {
 public:
     int countPairs(vector<int>& deliciousness) {
         unordered_map<int, unsigned int>mp;
-        vector<bool>b(33, true);
         unsigned int ret = 0;
         for(int x : deliciousness) {
-            ++mp[x];
-        }
-        for(int x : deliciousness) {
-            for(int i = 0; x + x >= table.power_2[i]; ++i) {
-                if(x + x == table.power_2[i]) {
-                    if(b[__builtin_clz(x)]) {
-                        ret += table.arr2[mp[x] - 1];
-                        b[__builtin_clz(x)] = false;
-                    } else {
-                        continue;
-                    }
-                } else if(mp.count(table.power_2[i] - x)) {
+            for(int i = 0; i < 22; ++i) {
+                if(mp.count(table.power_2[i] - x)) {
                     ret += mp[table.power_2[i] - x];
+                    ret %= 1000000007;
                 }
             }
+            ++mp[x];
         }
-        return ret % 1000000007;
+        return ret;
     }
 };
 
