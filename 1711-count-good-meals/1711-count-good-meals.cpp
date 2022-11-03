@@ -22,7 +22,7 @@ public:
     int countPairs(vector<int>& deliciousness) {
         unordered_map<int, int>mp;
         vector<int>b(33, true);
-        unsigned int ret = 0;
+        unsigned long long ret = 0;
         for(int x : deliciousness) {
             ++mp[x];
         }
@@ -31,14 +31,12 @@ public:
                 if(x + x == table.arr[i]) {
                     if(b[__builtin_clz(x)]) {
                         ret += table.arr2[mp[x] - 1];
-                        ret %= 1000000007;
                         b[__builtin_clz(x)] = false;
                     } else {
                         continue;
                     }
                 } else if(mp.count(table.arr[i] - x)) {
                     ret += mp[table.arr[i] - x];
-                    ret %= 1000000007;
                 }
             }
         }
