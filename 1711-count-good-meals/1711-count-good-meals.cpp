@@ -1,18 +1,13 @@
 struct Table {
     int power_2[31];
-    unsigned int arr2[100000];
     constexpr Table() :
-    power_2(), arr2()
+    power_2()
     {
         for(int i = 0; i < 31; ++i) {
             power_2[i] = (1 << i);
         }
-        arr2[1] = 1;
-        for(int i = 2; i < 100000; ++i) {
-            arr2[i] = arr2[i - 1] + i;
-            arr2[i] %= 1000000007;
-        }
     }
+
 };
 
 constexpr Table table;
