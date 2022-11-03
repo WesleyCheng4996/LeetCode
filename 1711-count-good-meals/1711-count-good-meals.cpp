@@ -20,8 +20,8 @@ constexpr Table table;
 class Solution {
 public:
     int countPairs(vector<int>& deliciousness) {
-        unordered_map<int, int>mp;
-        vector<int>b(33, true);
+        unordered_map<unsigned int, unsigned int>mp;
+        vector<bool>b(33, true);
         unsigned int ret = 0;
         for(int x : deliciousness) {
             ++mp[x];
